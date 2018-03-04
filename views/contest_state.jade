@@ -1,0 +1,384 @@
+extends layout
+
+block content  
+  .featured-section
+    .header-top.bg
+    .container
+      if(contest === "acm")
+        h2 注意比赛尚未开始报名，一切操作都不会保存
+        script.
+          alert('注意比赛尚未开始报名，一切操作都不会保存')
+        h2 ACM校内赛
+      else if(contest === "jiying")
+        h2 注意比赛尚未开始报名，一切操作都不会保存
+        script.
+          alert('注意比赛尚未开始报名，一切操作都不会保存')
+        h2 计算机应用设计大赛
+      .featured-main
+        .col-md-4.feature-accord
+          ul.topic_grid
+            li.list1
+              h3.m_3 赛事状态
+              .clear5
+          .menu_vertical
+            section.accordation_menu
+              div
+                input#label-1(name='lida', type='radio', checked='')
+                label#item1(for='label-1')
+                  i.ferme  
+                  span.m_5 比赛报名
+                  i.icon-plus-sign.i-right1
+                  i.icon-minus-sign.i-right2
+                #a1.content
+                  ul.news_list
+                    li.date_desc
+                    if(contest === "acm")
+                      p
+                        | 比赛报名入口将在2018年4月开放。
+                        | 请在规定时间内完成报名，如果您还没有报名，请在右侧填写报名信息。
+                        | 比赛报名后请继续关注比赛动态，按时参加比赛。
+                    else if(contest === "jiying")
+                      p
+                        | 比赛报名入口将在2018年3月开放。
+                        | 请在规定时间内完成报名，如果您还没有报名，请在右侧填写报名信息。
+                        | 比赛报名后请继续关注比赛动态，按时参加比赛。
+                      
+                    .clearfix  
+              div
+                input#label-2(name='lida', type='radio')
+                label#item2(for='label-2')
+                  i#i2.icon-leaf
+                  | 赛前组队
+                  i.icon-plus-sign.i-right1
+                  i.icon-minus-sign.i-right2
+                #a2.content
+                  ul.news_list
+                    li.date_desc
+                      if(contest === "acm")
+                        p
+                          | 比赛允许1-3人组队，所有参赛人员应先注册并报名，然后选择加入一支队伍加入或者自己组建新的队伍，
+                          | 请在右侧进行操作。报名后会自动分配到一个默认队伍，请自行更改队伍名字或者加入新的队伍。
+                      else if(contest === "jiying")
+                        p
+                          | 比赛组队人员限制将尽快公布。
+                          | 所有参赛人员应先注册并报名，然后选择加入一支队伍加入或者自己组建新的队伍，
+                          | 请在右侧进行操作。
+                    .clearfix  
+              div
+                input#label-3(name='lida', type='radio')
+                label#item3(for='label-3')
+                  i#i3.icon-trophy
+                  | 比赛时间
+                  i.icon-plus-sign.i-right1
+                  i.icon-minus-sign.i-right2
+                #a3.content
+                  ul.news_list
+                    li.date_desc
+                    if(contest === "acm")
+                      p
+                        | ACM校内赛尚未开始。
+                        | 比赛预计将在2018年5月择期举行，请关注比赛动态，不要错过比赛时间
+                    else if(contest === "jiying")
+                      p
+                        | 计算机应用设计大赛分为校内初赛、市级复赛和全国总决赛。
+                        | 初赛尚未开始。
+                        | 初赛预计将在2018年4月择期举行，请关注比赛动态，不要错过比赛时间。
+                    .clearfix  
+              div
+                input#label-4(name='lida', type='radio')
+                label#item4(for='label-4')
+                  i#i4.icon-trophy
+                  | 比赛地点
+                  i.icon-plus-sign.i-right1
+                  i.icon-minus-sign.i-right2
+                #a4.content
+                  ul.news_list
+                    li.date_desc
+                    if(contest === "acm")
+                      p
+                        | ACM校内赛尚未开始。
+                        | 比赛预计将在北京大学计算机机房举行，请关注比赛动态，获悉比赛地点
+                    else if(contest === "jiying")
+                      p
+                        | 计算机应用设计大赛分为校内初赛、市级复赛和全国总决赛。
+                        | 初赛尚未开始。
+                        | 初赛预计将在北京大学校内举行，地点尚未确定，请关注比赛动态，获悉比赛地点。
+                    .clearfix  
+              div
+                input#label-5(name='lida', type='radio')
+                label#item5(for='label-5')
+                  if(contest === "acm")
+                    i#i5.icon-trophy
+                    | 比赛成绩及奖励
+                  else if(contest === "jiying")
+                    i#i5.icon-trophy
+                    | 作品管理
+                  i.icon-plus-sign.i-right1
+                  i.icon-minus-sign.i-right2
+                #a5.content
+                  ul.news_list
+                    li.date_desc
+                    if(contest === "acm")
+                        p
+                          | 比赛成绩将在本网站公布，请及时查询。
+                          | 根据成绩奖励将有所不同，具体细节将在比赛前公布。
+                    else if(contest === "jiying")
+                        p
+                          | 参赛作品在初赛正式开始之前可以修改，比赛以最后一次上传作品作为有效参赛作品。
+                          | 初赛结束后成功晋级到复赛的作品，本网站会在特定时间开放提交入口进行进一步修改。
+                    .clearfix
+              div
+                input#label-1-6(name='lida', type='radio')
+                label#item-1-6(for='label-1-6')
+                  if(contest === "acm")
+                    i#i5.icon-trophy
+                    | 颁奖仪式 
+                  else if(contest === "jiying")
+                    i#i5.icon-trophy
+                    | 比赛成绩及奖励
+                  i.icon-plus-sign.i-right1
+                  i.icon-minus-sign.i-right2
+                #a5.content
+                  ul.news_list
+                    li.date_desc
+                    if(contest === "acm")
+                        p
+                          | 颁奖仪式预计在2018年6月于北京大学校内举行，请持续关注信息。
+                    else if(contest === "jiying")
+                        p
+                          | 比赛成绩将在本网站公布，请及时查询。
+                          | 根据成绩奖励将有所不同，具体细节将在比赛前公布。
+                    .clearfix
+        if(sign)
+          .col-md-4.feature-accord
+            ul.topic_grid
+              li.list1
+                h3.m_3 您的状态
+                .clear5
+            .menu_vertical
+              section.accordation_menu
+                div
+                  input#label-6(name='my_state', type='radio', checked='')
+                  label#item6(for='label-6')
+                    i.ferme  
+                    span.m_5 报名
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a1.content
+                    ul.news_list
+                      li.date_desc
+                        p
+                          | 您已经报名成功。
+                          | 您的id是：#{id}
+                      .clearfix  
+                div
+                  input#label-7(name='my_state', type='radio')
+                  label#item7(for='label-7')
+                    i#i2.icon-leaf
+                    | 组队情况
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a2.content
+                    ul.news_list
+                      li.date_desc
+                      if(team_name < 0)
+                        p
+                          | 您还没有组队
+                      else
+                        p
+                           您已经在一个队伍中了<br>
+                           您所在的队伍名为：#{team_name}<br>
+                           您所在的队伍id为：#{team_id}<br>
+                           您所在的队伍的成员包括：<br>
+                           #{member_info}
+                      .clearfix  
+                div
+                  input#label-8(name='my_state', type='radio')
+                  label#item8(for='label-8')                
+                    i#i3.icon-trophy
+                    if(contest === "acm")
+                      | 参赛情况
+                    else if(contest === "jiying")
+                      | 作品上交情况
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a3.content
+                    ul.news_list
+                      li.date_desc
+                      if(contest === "acm")
+                        if(attend_confirm > 0)
+                          p
+                            | 您已经参加了比赛。
+                        else if(attend_confirm === 0)
+                          p
+                            | 比赛已经结束，您没有参加比赛，如果有问题，请向我们反映。
+                        else if(attend_confirm < 0)
+                          p
+                            | 比赛尚未开始，请关注比赛时间不要错过。
+                      else if(contest === "jiying")
+                        if(other > 0)
+                          p
+                            | 您已经上传过作品
+                        else if(other < 0)
+                          p
+                            | 您尚未上传作品  
+                      .clearfix
+                div
+                  input#label-9(name='my_state', type='radio')
+                  label#item9(for='label-9')
+                    i#i4.icon-trophy
+                    if(contest === "acm")
+                      | 比赛成绩
+                    else if(contest === "jiying")
+                      | 参赛情况
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a4.content
+                    ul.news_list
+                      li.date_desc
+                      if(contest === "acm")
+                        if(prize < 0)
+                          p
+                            | 成绩尚未公布
+                        else if(prize === 1)
+                          p
+                            | 恭喜，您获得了一等奖。
+                        else if(prize === 2)
+                          p
+                            | 恭喜，您获得了二等奖。
+                        else if(prize === 3)
+                          p
+                            | 恭喜，您获得了三等奖。
+                        else
+                          p
+                            | 很遗憾，您没有获得奖项。
+                      else if(contest === "jiying")
+                        if(attend_confirm > 0)
+                          p
+                            | 您已经参加了比赛。
+                        else if(attend_confirm === 0)
+                          p
+                            | 比赛已经结束，您没有参加比赛，如果有问题，请向我们反映。
+                        else if(attend_confirm < 0)
+                          p
+                            | 比赛尚未开始，请关注比赛时间不要错过。 
+                      .clearfix  
+                if(contest === "jiying")
+                  div
+                    input#label-10(name='my_state', type='radio')
+                    label#item10(for='label-10')
+                      i#i5.icon-trophy
+                      | 比赛成绩
+                      i.icon-plus-sign.i-right1
+                      i.icon-minus-sign.i-right2
+                    #a5.content
+                      ul.news_list
+                        li.date_desc
+                          if(prize < 0)
+                            p
+                              | 成绩尚未公布
+                          else if(prize === 1)
+                            p
+                              | 恭喜，您获得了一等奖。
+                          else if(prize === 2)
+                            p
+                              | 恭喜，您获得了二等奖。
+                          else if(prize === 3)
+                            p
+                              | 恭喜，您获得了三等奖。
+                          else
+                            p
+                              | 很遗憾，您没有获得奖项。
+                        .clearfix
+          .col-md-4.feature-accord
+            ul.topic_grid
+              li.list1
+                h3.m_3 在这里更改队伍信息
+              .clear5
+            style.
+              .team{
+                width: 100%;
+                height: 55px;
+                padding: 5px 5px;
+                font-size: 20px;
+              }
+            form(action="/contests/change_team_name", method="get")
+              .wecome-button
+                  input.button.rotate2(type="submit" value="我要更改队伍名")
+                  input(type="hidden" name="id" value="#{id}")
+                  input(type="hidden" name="contest" value="#{contest}")
+                  input.text.team(name="new_team" value="新的队伍名称" onfocus="if(this.value==='新的队伍名称') this.value=''" onblur="if(this.value==='') this.value='新的队伍名称'")
+            form(action="/contests/add_member", method="get")
+              .wecome-button
+                  input.button.rotate2(type="submit" value="我要加入一个队员")
+                  input(type="hidden" name="id" value="#{id}")
+                  input(type="hidden" name="contest" value="#{contest}")
+                  input.text.team(name="number" value="要加入的队员id" onfocus="if(this.value==='要加入的队员id') this.value=''" onblur="if(this.value==='') this.value='要加入的队员id'")
+            if(contest==="jiying")
+              style.
+                .upload{
+                  width: 100%;
+                  height: 40px;
+                  position: relative;
+                  display: inline-block;
+                  background: #D0EEFF;
+                  border: 1px solid #99D3F5;
+                  border-radius: 4px;
+                  padding: 4px 12px;
+                  overflow: hidden;
+                  color: #1E88C7;
+                  text-decoration: none;
+                  text-indent: 0;
+                  line-height: 20px;
+                  cursor: pointer;
+                }
+              ul.topic_grid
+                li.list1
+                  h3.m_3 在这里上传作品
+                .clear5
+                form(action="/contests/upload/?id=#{id}&contest=#{contest}" method="post" enctype="multipart/form-data")
+                  .wecome-button
+                    input.upload(type="file" name="file")                
+                    input.button.rotate2(type="submit" value="提交")
+                p#fileName
+                script.
+                  $("#file").on("change", function () {
+                      //截取路径，获取上传文件名
+                      var urlArr = this.value.split("\\");
+                      if (this && this.files && this.files[0]) {
+                          document.getElementById("fileName").innerHTML = urlArr[urlArr.length - 1];
+                          var fileUrl = URL.createObjectURL(this.files[0]);
+                          //document.getElementById("fileImg").src = fileUrl;
+                      } else {
+                          //兼容IE9以下
+                          document.getElementById("fileName").innerHTML = urlArr[urlArr.length - 1];
+                          //document.getElementById("fileImg").style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                          //document.getElementById("fileImg").filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
+                      }
+                  });
+            .wecome-button
+              a.button.rotate2(href='/contests/?id=#{id}')
+                | 返回
+                span
+        else
+          .col-md-4.feature-accord
+            .wecome-button
+            a.button.rotate2(href='/contests/sign/?id=#{id}&contest=#{contest}')
+              | 点击报名
+              span
+            div
+              section
+                form(action="", method="post")                  
+          .col-md-4.feature-accord
+            .wecome-button
+              a.button.rotate2(href='/contests/?id=#{id}')
+                | 返回
+                span
+  .copy-right-section
+    .container
+      .col-md-6.copy-right
+        p
+          | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
+          a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
+          | EECSSAST： 
+          a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST

@@ -1,0 +1,149 @@
+extends layout
+
+block content  
+  .featured-section
+    .header-top.bg
+    .container
+      if(job==="contest")
+        if(detail === "acm")
+          h2 ACM校内赛比赛管理
+        else if(detail === "jiying")
+          h2 计算机应用设计大赛管理
+        .featured-main
+          .col-md-4.feature-accord
+            ul.topic_grid
+              li.list1
+                h3.m_3 在这里为队伍签到
+              .clear5
+            style.
+              .team{
+                width: 100%;
+                height: 55px;
+                padding: 5px 5px;
+                font-size: 20px;
+              }
+            form(action="/admin", method="get")
+              .wecome-button
+                  input.button.rotate2(type="submit" value="为这个队伍签到")
+                  input(type="hidden" name="id" value="#{id}")
+                  input(type="hidden" name="contest" value="#{detail}")
+                  input(type="hidden" name="action" value="check_contest")
+                  input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")
+          .col-md-4.feature-accord
+            ul.topic_grid
+              li.list1
+                h3.m_3 在这里为队伍登记成绩
+              .clear5
+            form(action="/admin", method="get")
+              .wecome-button
+                  input.button.rotate2(type="submit" value="决定这个队伍得到一等奖")
+                  input(type="hidden" name="id" value="#{id}")
+                  input(type="hidden" name="contest" value="#{detail}")
+                  input(type="hidden" name="action" value="prize_contest")
+                  input(type="hidden" name="prize" value="1")
+                  input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")  
+            form(action="/admin", method="get")
+              .wecome-button
+                  input.button.rotate2(type="submit" value="决定这个队伍得到二等奖")
+                  input(type="hidden" name="id" value="#{id}")
+                  input(type="hidden" name="contest" value="#{detail}")
+                  input(type="hidden" name="action" value="prize_contest")
+                  input(type="hidden" name="prize" value="2")
+                  input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")
+            form(action="/admin", method="get")
+              .wecome-button
+                  input.button.rotate2(type="submit" value="决定这个队伍得到三等奖")
+                  input(type="hidden" name="id" value="#{id}")
+                  input(type="hidden" name="contest" value="#{detail}")
+                  input(type="hidden" name="action" value="prize_contest")
+                  input(type="hidden" name="prize" value="3")
+                  input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")  
+          .col-md-4.feature-accord  
+            .wecome-button
+              a.button.rotate2(href='/admin/?id=#{id}&action=contests')
+                | 返回
+                span    
+      else if(job==="activity")
+        if(detail === "acm-school")
+          h2 ACM校内赛志愿者管理
+        else if(detail === "acm-worldfinal")
+          h2 ACM世界总决赛志愿者管理
+        .featured-main
+          .col-md-4.feature-accord
+            style.
+              .team{
+                width: 100%;
+                height: 55px;
+                padding: 5px 5px;
+                font-size: 20px;
+              }
+            ul.topic_grid
+              li.list1
+                h3.m_3 为志愿者签到
+                .clear5                  
+            if(detail === "acm-school")
+              form(action="/admin", method="get")
+                .wecome-button
+                    input(type="hidden" name="id" value="#{id}")
+                    input(type="hidden" name="activity" value="#{detail}")
+                    input(type="hidden" name="action" value="check_activity")
+                    input.text.team(name="volunteer_id" value="志愿者id" onfocus="if(this.value==='志愿者id') this.value=''" onblur="if(this.value==='') this.value='志愿者id'")
+                    input(type="hidden" value="0" name="group")
+                    input.button.rotate2(type="submit" value="为TA签到第一组")
+              form(action="/admin", method="get")
+                .wecome-button
+                    input(type="hidden" name="id" value="#{id}")
+                    input(type="hidden" name="activity" value="#{detail}")
+                    input(type="hidden" name="action" value="check_activity")
+                    input.text.team(name="volunteer_id" value="志愿者id" onfocus="if(this.value==='志愿者id') this.value=''" onblur="if(this.value==='') this.value='志愿者id'")
+                    input.button.rotate2(type="submit" value="为TA签到第二组")
+                    input(type="hidden" value="1" name="group")
+              form(action="/admin", method="get")
+                .wecome-button
+                    input(type="hidden" name="id" value="#{id}")
+                    input(type="hidden" name="activity" value="#{detail}")
+                    input(type="hidden" name="action" value="check_activity")
+                    input.text.team(name="volunteer_id" value="志愿者id" onfocus="if(this.value==='志愿者id') this.value=''" onblur="if(this.value==='') this.value='志愿者id'")
+                    input.button.rotate2(type="submit" value="为TA签到第三组")
+                    input(type="hidden" value="2" name="group")
+            else if(detail === "acm-worldfinal")
+              form(action="/admin", method="get")
+                .wecome-button
+                    input(type="hidden" name="id" value="#{id}")
+                    input(type="hidden" name="activity" value="#{detail}")
+                    input(type="hidden" name="action" value="check_activity")
+                    input.text.team(name="volunteer_id" value="志愿者id" onfocus="if(this.value==='志愿者id') this.value=''" onblur="if(this.value==='') this.value='志愿者id'")
+                    input(type="hidden" value="0" name="group")
+                    input.button.rotate2(type="submit" value="为TA签到第一组")
+              form(action="/admin", method="get")
+                .wecome-button
+                    input(type="hidden" name="id" value="#{id}")
+                    input(type="hidden" name="activity" value="#{detail}")
+                    input(type="hidden" name="action" value="check_activity")
+                    input.text.team(name="volunteer_id" value="志愿者id" onfocus="if(this.value==='志愿者id') this.value=''" onblur="if(this.value==='') this.value='志愿者id'")
+                    input.button.rotate2(type="submit" value="为TA签到第二组")
+                    input(type="hidden" value="1" name="group")
+              form(action="/admin", method="get")
+                .wecome-button
+                    input(type="hidden" name="id" value="#{id}")
+                    input(type="hidden" name="activity" value="#{detail}")
+                    input(type="hidden" name="action" value="check_activity")
+                    input.text.team(name="volunteer_id" value="志愿者id" onfocus="if(this.value==='志愿者id') this.value=''" onblur="if(this.value==='') this.value='志愿者id'")
+                    input.button.rotate2(type="submit" value="为TA签到第三组")
+                    input(type="hidden" value="2" name="group")
+          .col-md-4.feature-accord
+            .wecome-button
+              a.button.rotate2(href='/admin/?id=#{id}&action=volunteers')
+                | 返回
+                span 
+  .testimonials#testimonials
+    .wmuSlider.example1
+  // //End-foote
+  .copy-right-section
+    .container
+      .col-md-6.copy-right
+        p
+          | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
+          a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
+          | EECSSAST： 
+          a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST 

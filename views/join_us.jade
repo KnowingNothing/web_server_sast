@@ -1,0 +1,179 @@
+extends layout
+block content
+  input#id(type="hidden" value="#{id}")
+  // header
+  .header-section2
+    // log-and-register
+    .header-grey
+      .right#upper
+        ul.login
+          li.login
+            a.login(href="/admin/?action=login") 管理登录
+          li.login
+            a.login(href="/login") 普通登录
+          li.login
+            a.login(href="/register") 注册
+    script.
+      var id = document.getElementById("id");
+      id = id.value;
+      if(id>0)
+      {
+        $('#upper').empty();
+        $('#upper').append(`<ul class='login'>
+          <li class='login'><a class='login' href='#'>欢迎您</a></li>
+          <li class='login'><a class='login' href='/'>退出登录</a></li>
+          </ul>`);
+      }
+    .header-top.bg
+      .container
+        // logo
+        .logo.two
+          //a(href='index.html')
+          img(src='/images/logo.png', alt='')
+        // top-nav
+        .clearfix  
+    .sub-header.two
+      .top-nav
+        span.menu.two  
+        ul
+          li
+            if(admin)
+              a(href="/admin/?id=#{id}&action=home") Home
+            else
+              a(href="/?id=#{id}") Home
+          li
+            if(admin)
+              a(href="/admin/?id=#{id}&action=about_us") About
+            else
+              a(href="/about_us/?id=#{id}") About
+          li
+            if(admin)
+              a(href="/admin/?id=#{id}&action=contests") Contests
+            else
+              a(href="/contests/?id=#{id}") Contests
+          li
+            if(admin)
+              a(href="/admin/?id=#{id}&action=volunteers") Volunteers
+            else 
+              a(href="/volunteers/?id=#{id}") Volunteers
+          li
+            if(admin)
+              a(href="/admin/?id=#{id}&action=downloads") Downloads
+            else
+              a(href="/downloads/?id=#{id}") Downloads
+          li.active
+            if(admin)
+              a(href="/admin/?id=#{id}&action=join_us") Join Us
+            else
+              a(href="/about_us/join_us/?id=#{id}") Join Us
+          .clearfix  
+    .clearfix  
+    // script-for-menu
+    script.
+      $(document).ready(function(){
+      $("span.menu").click(function(){
+      $(".top-nav ul").slideToggle(200);
+      });
+      });
+    .clearfix  
+  // /header
+  .featured-section
+    .container
+      h2 加入我们
+      .featured-main  
+        .col-md-4.feature-accord
+          ul.topic_grid
+            li.list1
+              h3.m_3 科协期待您的加入
+              .clear5
+          .menu_vertical
+            section.accordation_menu
+              div
+                input#label-1(name='lida', type='radio', checked='')
+                label#item1(for='label-1')
+                  i.ferme  
+                  span.m_5 竞赛零距离
+                  i.icon-plus-sign.i-right1
+                  i.icon-minus-sign.i-right2
+                #a1.content
+                  ul.news_list
+                    li.date_desc
+                      p
+                        | 科协有机会与各大比赛零距离接触，加入科协，将有机会亲自参与到相关工作中
+                    .clearfix  
+              div
+                input#label-2(name='lida', type='radio')
+                label#item2(for='label-2')
+                  i#i2.icon-leaf
+                  | 部门福利
+                  i.icon-plus-sign.i-right1
+                  i.icon-minus-sign.i-right2
+                #a2.content
+                  ul.news_list
+                    li.date_desc
+                      p
+                        | 科协依靠自身能力拉取赞助，部门中福利较为优厚。每学期都有聚餐或者聚会活动。
+                        | 此外在科协可以学习到新的知识，无论是计算机方面的基本知识还是社会社交基本技能，科协给你机会获得这些。
+                    .clearfix  
+              div
+                input#label-3(name='lida', type='radio')
+                label#item3(for='label-3')
+                  i#i3.icon-trophy
+                  | 认真搞事情
+                  i.icon-plus-sign.i-right1
+                  i.icon-minus-sign.i-right2
+                #a3.content
+                  ul.news_list
+                    li.date_desc
+                      p
+                        | 我们工作起来一定要认真，一丝不苟。玩起来，就要毫不保留，尽情畅快。
+                        | 相信有了你的加入，我们能获得新的元素。
+                    .clearfix  
+              div
+                input#label-4(name='lida', type='radio')
+                label#item4(for='label-4')
+                  i#i4.icon-trophy
+                  | 还在等什么
+                  i.icon-plus-sign.i-right1
+                  i.icon-minus-sign.i-right2
+                #a4.content
+                  ul.news_list
+                    li.date_desc
+                      p
+                        | 联系方式就在右侧，加入我们，一起创造，一起奋斗。
+                    .clearfix  
+              div
+                input#label-5(name='lida', type='radio')
+                label#item5(for='label-5')
+                  i#i5.icon-trophy
+                  | 跨院系的机会 
+                  i.icon-plus-sign.i-right1
+                  i.icon-minus-sign.i-right2
+                #a5.content
+                  ul.news_list
+                    li.date_desc
+                      p
+                        | 院系永远不能阻隔加入科协的脚步，无论您来自哪个院系，我们都欢迎您。
+                    .clearfix  
+        .col-md-4.feature-accord
+          ul.topic_grid
+            li.list1
+              h3.m_3 联系方式
+              .clear5
+            li.list1
+              h4.m_3 部门邮箱：eecskexie@163.com
+              .clear5
+            li.list1
+              h4.m_3 主席邮箱：zhengsz@pku.edu.cn
+              .clear5
+  .testimonials#testimonials
+    .wmuSlider.example1
+  // //End-foote
+  .copy-right-section
+    .container
+      .col-md-6.copy-right
+        p
+          | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
+          a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
+          | EECSSAST： 
+          a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST

@@ -1,0 +1,431 @@
+extends layout
+
+block content  
+  .featured-section
+    .header-top.bg
+    .container
+      if(activity==="acm-school")
+        h2 注意活动尚未开始报名，一切操作都不会保存
+        script.
+          window.alert('注意活动尚未开始报名，一切操作都不会保存')
+        h2 ACM校内赛志愿者
+        .featured-main
+          .col-md-4.feature-accord
+            ul.topic_grid
+              li.list1
+                h3.m_3 志愿活动状态
+                .clear5
+            .menu_vertical
+              section.accordation_menu
+                div
+                  input#label-1(name='lida', type='radio', checked='')
+                  label#item1(for='label-1')
+                    i.ferme  
+                    span.m_5 活动报名
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a1.content
+                    ul.news_list
+                      li.date_desc
+                      p
+                        | 志愿活动报名入口预计在2018年4月开放。
+                        | 请及时关注信息，顺利报名。                      
+                      .clearfix  
+                div
+                  input#label-2(name='lida', type='radio')
+                  label#item2(for='label-2')
+                    i#i2.icon-leaf
+                    | 志愿分组
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a2.content
+                    ul.news_list
+                      li.date_desc
+                        p
+                          | 志愿活动分为不同的小组。
+                          | 志愿者需要进入至少一个小组，每个小组的工作在下面详细介绍。
+                          | 加入分组的方式为在右侧点击对应的按钮即可报名对应小组。
+                          | 请根据自己的时间、能力选择合适的小组。
+                      .clearfix  
+                div
+                  input#label-3(name='lida', type='radio')
+                  label#item3(for='label-3')
+                    i#i3.icon-trophy
+                    | 志愿报酬
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a3.content
+                    ul.news_list
+                      li.date_desc
+                      p
+                        | 参加志愿活动有相应报酬，在各个小组的详细介绍中将会说明。
+                        | 报酬发放方式为支付宝转账。根据情况可以开具志愿证明。
+                      .clearfix  
+                div
+                  input#label-4(name='lida', type='radio')
+                  label#item4(for='label-4')
+                    i#i4.icon-trophy
+                    | 志愿小组一
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a4.content
+                    ul.news_list
+                      li.date_desc
+                      p
+                        | 工作尚未安排。报酬未知。
+                      .clearfix  
+                div
+                  input#label-5(name='lida', type='radio')
+                  label#item5(for='label-5')
+                    i#i5.icon-trophy
+                    | 志愿小组二
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a5.content
+                    ul.news_list
+                      li.date_desc
+                        p
+                          | 工作尚未安排。报酬未知。
+                      .clearfix
+                div
+                  input#label-1-6(name='lida', type='radio')
+                  label#item-1-6(for='label-1-6')
+                    i#i5.icon-trophy
+                    | 志愿小组三
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a5.content
+                    ul.news_list
+                      li.date_desc
+                        p
+                          | 工作尚未安排。报酬未知。
+                      .clearfix
+          if(sign)
+            .col-md-4.feature-accord
+              ul.topic_grid
+                li.list1
+                  h3.m_3 您的志愿小组报名情况
+                  h3.m_3 您的id是#{id}
+                  .clear5
+              if(group % 2 >= 1)
+                a.button.rotate2(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=0')
+                  | 已加入第一组，点击放弃报名
+                  span
+                  img(src="/images/avatar.png", alt="第一组二维码")
+                  label 扫描第一组二维码
+              else
+                a.button.rotate2(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=0')
+                  | 点击加入第一组
+                  span
+              if(group / 2 % 2 >= 1)
+                a.button.rotate2(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=1')
+                  | 已加入第二组，点击放弃报名
+                  span
+                  img(src="/images/avatar.png", alt="第二组二维码")
+                  label 扫描第二组二维码
+              else
+                a.button.rotate2(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=1')
+                  | 点击加入第二组
+                  span
+              if(group / 4 % 2 >= 1)
+                a.button.rotate2(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=2')
+                  | 已加入第三组，点击放弃报名
+                  span
+                  img(src="/images/avatar.png", alt="第三组二维码")
+                  label 扫描第三组二维码
+              else
+                a.button.rotate2(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=2')
+                  | 点击加入第三组
+                  span
+            .col-md-4.feature-accord
+              ul.topic_grid
+                li.list1
+                  h3.m_3 您的活动情况
+                  .clear5
+              .menu_vertical
+                section.accordation_menu
+                  if(group % 2 >= 1)
+                    div
+                      input#label-2-1(name='state', type='radio', checked='')
+                      label#item2-1(for='label-2-1')
+                        i.ferme  
+                        span.m_5 您已经报名了第一组
+                        i.icon-plus-sign.i-right1
+                        i.icon-minus-sign.i-right2
+                      #a1.content
+                        ul.news_list
+                          li.date_desc
+                          if(attend_confirm % 2 >= 1)
+                            p
+                              | 您已经出色地完成了这个小组的任务。
+                          else
+                            p
+                              | 并没有您的活动记录。                       
+                          .clearfix 
+                  if(group / 2 % 2 >= 1)
+                    div
+                      input#label-2-2(name='state', type='radio')
+                      label#item2-2(for='label-2-2')
+                        i.ferme  
+                        span.m_5 您已经报名了第二组
+                        i.icon-plus-sign.i-right1
+                        i.icon-minus-sign.i-right2
+                      #a1.content
+                        ul.news_list
+                          li.date_desc
+                          if(attend_confirm / 2 % 2 >= 1)
+                            p
+                              | 您已经出色地完成了这个小组的任务。
+                          else
+                            p
+                              | 并没有您的活动记录。                      
+                          .clearfix
+                  if(group / 4 % 2 >= 1)
+                    div
+                      input#label-2-3(name='state', type='radio')
+                      label#item2-3(for='label-2-3')
+                        i.ferme  
+                        span.m_5 您已经报名了第三组
+                        i.icon-plus-sign.i-right1
+                        i.icon-minus-sign.i-right2
+                      #a1.content
+                        ul.news_list
+                          li.date_desc
+                          if(attend_confirm / 4 % 2 >= 1)
+                            p
+                              | 您已经出色地完成了这个小组的任务。
+                          else
+                            p
+                              | 并没有您的活动记录。                      
+                          .clearfix
+              .wecome-button
+                a.button.rotate2(href='/volunteers/?id=#{id}')
+                  | 返回
+                  span
+          else
+            .col-md-4.feature-accord
+              .wecome-button
+              a.button.rotate2(href='/volunteers/volunteer/sign/?id=#{id}&activity=#{activity}')
+                | 点击参加志愿活动
+                span                 
+            .col-md-4.feature-accord
+              .wecome-button
+                a.button.rotate2(href='/volunteers/?id=#{id}')
+                  | 返回
+                  span     
+      else if(activity==="acm-worldfinal")
+        h2 注意活动尚未开始报名，一切操作都不会保存
+        h2 ACM世界总决赛赛志愿者
+        script.
+          window.alert('注意活动尚未开始报名，一切操作都不会保存')
+        .featured-main
+          .col-md-4.feature-accord
+            ul.topic_grid
+              li.list1
+                h3.m_3 志愿活动状态
+                .clear5
+            .menu_vertical
+              section.accordation_menu
+                div
+                  input#label-1(name='lida', type='radio', checked='')
+                  label#item1(for='label-1')
+                    i.ferme  
+                    span.m_5 活动报名
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a1.content
+                    ul.news_list
+                      li.date_desc
+                      p
+                        | 志愿活动报名入口预计在2018年3月开放。
+                        | 请及时关注信息，顺利报名。                      
+                      .clearfix  
+                div
+                  input#label-2(name='lida', type='radio')
+                  label#item2(for='label-2')
+                    i#i2.icon-leaf
+                    | 志愿分组
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a2.content
+                    ul.news_list
+                      li.date_desc
+                        p
+                          | 志愿活动分为不同的小组。
+                          | 志愿者需要进入至少一个小组，每个小组的工作在下面详细介绍。
+                          | 加入分组的方式为在右侧点击对应的按钮即可报名对应小组。
+                          | 请根据自己的时间、能力选择合适的小组。
+                      .clearfix  
+                div
+                  input#label-3(name='lida', type='radio')
+                  label#item3(for='label-3')
+                    i#i3.icon-trophy
+                    | 志愿报酬
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a3.content
+                    ul.news_list
+                      li.date_desc
+                      p
+                        | 参加志愿活动有相应报酬，在各个小组的详细介绍中将会说明。
+                        | 报酬发放方式为支付宝转账。根据情况可以开具志愿证明。
+                      .clearfix  
+                div
+                  input#label-4(name='lida', type='radio')
+                  label#item4(for='label-4')
+                    i#i4.icon-trophy
+                    | 志愿小组一
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a4.content
+                    ul.news_list
+                      li.date_desc
+                      p
+                        | 工作尚未安排。报酬未知。
+                      .clearfix  
+                div
+                  input#label-5(name='lida', type='radio')
+                  label#item5(for='label-5')
+                    i#i5.icon-trophy
+                    | 志愿小组二
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a5.content
+                    ul.news_list
+                      li.date_desc
+                        p
+                          | 工作尚未安排。报酬未知。
+                      .clearfix
+                div
+                  input#label-1-6(name='lida', type='radio')
+                  label#item-1-6(for='label-1-6')
+                    i#i5.icon-trophy
+                    | 志愿小组三
+                    i.icon-plus-sign.i-right1
+                    i.icon-minus-sign.i-right2
+                  #a5.content
+                    ul.news_list
+                      li.date_desc
+                        p
+                          | 工作尚未安排。报酬未知。
+                      .clearfix
+          if(sign)
+            .col-md-4.feature-accord
+              ul.topic_grid
+                li.list1
+                  h3.m_3 您的志愿小组报名情况
+                  .clear5
+              if(group % 2 >= 1)
+                a.button.rotate2(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=0')
+                  | 已加入第一组，点击放弃报名
+                  span
+                  img(src="/images/acm-worldfinal-group1.jpg", alt="第一组二维码")
+                  label 扫描第一组二维码
+              else
+                a.button.rotate2(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=0')
+                  | 点击加入第一组
+                  span
+              if(group / 2 % 2 >= 1)
+                a.button.rotate2(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=1')
+                  | 已加入第二组，点击放弃报名
+                  span
+                  img(src="/images/acm-worldfinal-group1.jpg", alt="第二组二维码")
+                  label 扫描第二组二维码
+              else
+                a.button.rotate2(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=1')
+                  | 点击加入第二组
+                  span
+              if(group / 4 % 2 >= 1)
+                a.button.rotate2(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=2')
+                  | 已加入第三组，点击放弃报名
+                  span
+                  img(src="/images/acm-worldfinal-group1.jpg", alt="第三组二维码")
+                  label 扫描第三组二维码
+              else
+                a.button.rotate2(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=2')
+                  | 点击加入第三组
+                  span
+            .col-md-4.feature-accord
+              ul.topic_grid
+                li.list1
+                  h3.m_3 您的活动情况
+                  .clear5
+              .menu_vertical
+                section.accordation_menu
+                  if(group % 2 >= 1)
+                    div
+                      input#label-2-1(name='state', type='radio', checked='')
+                      label#item2-1(for='label-2-1')
+                        i.ferme  
+                        span.m_5 您已经报名了第一组
+                        i.icon-plus-sign.i-right1
+                        i.icon-minus-sign.i-right2
+                      #a1.content
+                        ul.news_list
+                          li.date_desc
+                          if(attend_confirm % 2 >= 1)
+                            p
+                              | 您已经出色地完成了这个小组的任务。
+                          else
+                            p
+                              | 并没有您的活动记录。                       
+                          .clearfix 
+                  if(group / 2 % 2 >= 1)
+                    div
+                      input#label-2-2(name='state', type='radio')
+                      label#item2-2(for='label-2-2')
+                        i.ferme  
+                        span.m_5 您已经报名了第二组
+                        i.icon-plus-sign.i-right1
+                        i.icon-minus-sign.i-right2
+                      #a1.content
+                        ul.news_list
+                          li.date_desc
+                          if(attend_confirm / 2 % 2 >= 1)
+                            p
+                              | 您已经出色地完成了这个小组的任务。
+                          else
+                            p
+                              | 并没有您的活动记录。                      
+                          .clearfix
+                  if(group / 4 % 2 >= 1)
+                    div
+                      input#label-2-3(name='state', type='radio')
+                      label#item2-3(for='label-2-3')
+                        i.ferme  
+                        span.m_5 您已经报名了第三组
+                        i.icon-plus-sign.i-right1
+                        i.icon-minus-sign.i-right2
+                      #a1.content
+                        ul.news_list
+                          li.date_desc
+                          if(attend_confirm / 4 % 2 >= 1)
+                            p
+                              | 您已经出色地完成了这个小组的任务。
+                          else
+                            p
+                              | 并没有您的活动记录。                      
+                          .clearfix
+              .wecome-button
+                a.button.rotate2(href='/volunteers/?id=#{id}')
+                  | 返回
+                  span
+          else
+            .col-md-4.feature-accord
+              .wecome-button
+              a.button.rotate2(href='/volunteers/volunteer/sign/?id=#{id}&activity=#{activity}')
+                | 点击参加志愿活动
+                span                 
+            .col-md-4.feature-accord
+              .wecome-button
+                a.button.rotate2(href='/volunteers/?id=#{id}')
+                  | 返回
+                  span
+  .copy-right-section
+    .container
+      .col-md-6.copy-right
+        p
+          | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
+          a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
+          | EECSSAST： 
+          a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST 

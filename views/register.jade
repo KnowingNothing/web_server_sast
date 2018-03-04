@@ -1,0 +1,134 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title 注册账号
+    link(type='text/css' href="/stylesheets/log-style.css" rel="stylesheet")
+    script(type="application/javascript").
+      function check_empty(val, initial_val)
+      {
+          val = val.replace(/(^\s*)|(\s*$)/g, '');
+          if(val === undefined || val.length < 1 || val === initial_val){
+              return true;
+          }
+          return false;
+      }
+      function check_email(email)
+      {
+          var split_email = email.split('@');        
+          if(split_email.length !== 2)
+          {
+              return false;
+          }
+          var [local, domain] = split_email
+          var std_local = /^[-\_\.a-zA-Z0-9]{1,64}$/;
+          var std_domain = /^[0-9a-zA-Z][-0-9a-zA-Z\.]*?\.[-0-9a-zA-Z]*[0-9a-zA-Z]$/
+          if(!std_local.test(local) || !std_domain.test(domain))
+          {
+              return false;
+          }
+          else if(/\.\./.test(local) || /^[-0-9a-zA-Z]+\.[0-9]+$/.test(domain) || domain.length > 63)
+          {
+              return false;
+          }
+          return true;
+      }
+      function check(){
+          var name = document.getElementById('name').value;
+          var phone_number = document.getElementById('phone_number').value;
+          var number = document.getElementById('number').value;
+          var email = document.getElementById('email').value;
+          var password = document.getElementById('password').value;
+          var confirm_password = document.getElementById('confirm_password').value;
+          var good_input = false;
+          if(check_empty(name, "姓名")){
+              alert("名字不能为空");
+          }
+          else if(check_empty(phone_number, "输入手机号")){
+              alert("请输入手机号");
+          }
+          else if(check_empty(number, "输入学号")){
+              alert("请输入学号");
+          }
+          else if(check_empty(email, "输入邮箱")){
+              alert("请输入邮箱");
+          }
+          else if(check_empty(password, "")){
+              alert("请输入密码");
+          }
+          else if(check_empty(confirm_password, "")){
+              alert("请输入确认密码");
+          }
+          else{
+              if(phone_number.length !== 11){
+                alert("请输入有效手机号");
+              }
+              else if(!check_email(email)){
+                alert("请输入合法邮箱");
+              }
+              else if(password.length < 6 || password.length > 20)
+              {
+                alert("密码长度应在6-20");
+              }
+              else if(password !== confirm_password)
+              {
+                alert("确认密码错误");
+              }
+              else
+              {
+                good_input = true;
+              }
+          }
+          return good_input;
+      }
+  body
+    script(src='/javascripts/jquery-1.8.3.min.js', type='text/javascript')
+    .logo_box
+      h2 科协欢迎您
+      h3 #{message}
+      form#register(action='/register', name='f', method='post', onsubmit="return check()")
+        .input_outer
+          span.u_user
+          input.text#name(name='name', onfocus=" if(this.value=='姓名') this.value=''", onblur="if(this.value=='') this.value='姓名'", value='姓名', style='color: #FFFFFF !important', type='text')
+        .input_outer
+          span.u_user
+          input.text#number(name='number', onfocus=" if(this.value=='输入学号') this.value=''", onblur="if(this.value=='') this.value='输入学号'", value='输入学号', style='color: #FFFFFF !important', type='text')
+        .input_outer
+          span.u_user
+          select(name="university" value = "-1" style='color: #FFFFFF !important') 学校
+            option(value="1" selected="selected" style='color: #000000 !important') 北京大学
+            option(value="2" style='color: #000000 !important') 清华大学
+            option(value="3" style='color: #000000 !important') 人民大学
+        div(style="margin-left: auto; margin-right: auto; width: 250px; margin-bottom: 8px")
+            span(style="font-size:18px;") 性别:&nbsp;&nbsp;&nbsp;&nbsp;
+            input(name="gender" type="radio" checked value="0")
+            span(style="font-size: 18px;") 男
+            |&nbsp;&nbsp;
+            input.radio(name="gender" type="radio" value="1")
+            span(style="font-size: 18px;") 女
+        .input_outer
+          span.u_user
+          input.text(name='school', onfocus=" if(this.value=='输入学院') this.value=''", onblur="if(this.value=='') this.value='输入学院'", value='输入学院', style='color: #FFFFFF !important', type='text')
+        .input_outer
+          span.u_user
+          input.text#phone_number(name='phone_number', onfocus=" if(this.value=='输入手机号') this.value=''", onblur="if(this.value=='') this.value='输入手机号'", value='输入手机号', style='color: #FFFFFF !important', type='text')
+        .input_outer
+          span.u_user
+          input.text#email(name='email', onfocus=" if(this.value=='输入邮箱') this.value=''", onblur="if(this.value=='') this.value='输入邮箱'", value='输入邮箱', style='color: #FFFFFF !important', type='text')
+        .input_outer
+          span.us_uer
+          label.l-login.login_password(style='color: rgb(255, 255, 255);display: block;') 输入密码
+          input.text#password(name='password', style='color: #FFFFFF !important; position:absolute; z-index:100;', onfocus="$('.login_password').hide()", onblur="if(this.value=='') $('.login_password').show()", value='', type='password')
+        .input_outer
+          span.us_uer
+          label.l-login.login_password(style='color: rgb(255, 255, 255);display: block;') 确认密码
+          input.text#confirm_password(style='color: #FFFFFF !important; position:absolute; z-index:100;', onfocus="$('.login_password').hide()", onblur="if(this.value=='') $('.login_password').show()", value='', type='password')
+        .mb2
+          button.act-but.submit(style='color: #FFFFFF') 注册
+        //input#check-box.checkbox(name='savesid', value='0', type='checkbox')
+        //span 记住用户名
+      //a.login-fgetpwd(href='#', style='color: #FFFFFF') 忘记密码？
+      .sas
+        a(href='/login') 已有账号，这里登录
+      .sas
+        a(href="/") 放弃注册
