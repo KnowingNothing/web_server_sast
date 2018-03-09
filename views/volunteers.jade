@@ -31,10 +31,10 @@ block content
           //a(href='index.html')
           img(src='/images/logo.png', alt='')
         // top-nav
-        .clearfix  
+        .clearfix
     .sub-header.two
       .top-nav
-        span.menu.two  
+        span.menu.two
         ul
           li
             if(admin)
@@ -54,7 +54,7 @@ block content
           li.active
             if(admin)
               a(href="/admin/?id=#{id}&action=volunteers") Volunteers
-            else 
+            else
               a(href="/volunteers/?id=#{id}") Volunteers
           li
             if(admin)
@@ -66,8 +66,8 @@ block content
               a(href="/admin/?id=#{id}&action=join_us") Join Us
             else
               a(href="/about_us/join_us/?id=#{id}") Join Us
-          .clearfix  
-    .clearfix 
+          .clearfix
+    .clearfix
     // script-for-menu
     script.
       $(document).ready(function(){
@@ -75,7 +75,7 @@ block content
       $(".top-nav ul").slideToggle(200);
       });
       });
-    .clearfix  
+    .clearfix
   // /header
   .featured-section
     .container
@@ -99,29 +99,9 @@ block content
             else
               a.button.rotate2(href='/volunteers/volunteer/?id=#{id}&activity=acm-school')
                 | 相关信息
-                span  
-                img(src='/images/DSC03646.JPG', alt='')
-        .col-md-4.feature-text
-          h3
-            | ACM世界总决赛
-          if(admin)
-            p
-              | 管理志愿活动
-          else
-            p
-              | 欢迎参加志愿活动
-          .wecome-button            
-            if(admin)
-              a.button.rotate2(href='/admin/?id=#{id}&activity=acm-worldfinal&action=manage_activity')
-                | 点击管理志愿者
                 span
                 img(src='/images/DSC03646.JPG', alt='')
-            else
-              a.button.rotate2(href='/volunteers/volunteer/?id=#{id}&activity=acm-worldfinal')
-                | 相关信息
-                span      
-                img(src='/images/DSC03646.JPG', alt='')  
-  
+
   .testimonials#testimonials
     .wmuSlider.example1
   // //End-foote
@@ -131,5 +111,5 @@ block content
         p
           | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
           a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
-          | EECSSAST： 
+          | EECSSAST：
           a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST
