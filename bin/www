@@ -7,14 +7,16 @@
 var app = require('../app');
 var debug = require('debug')('sast:server');
 var http = require('http');
+let config = require('../config/server.json');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var host= "162.105.98.221";
+var host = config.host;
+var port = config.port;
 // var host = "127.0.0.1";
-var port = normalizePort("80" || process.env.PORT || '3000');
+// var port = normalizePort("80" || process.env.PORT || '3000');
 app.set('port', port);
 
 /**

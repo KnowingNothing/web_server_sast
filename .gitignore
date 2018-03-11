@@ -2,3 +2,4 @@ nohup.out
 database/
 node_modules/
 doc/README.md
+config/

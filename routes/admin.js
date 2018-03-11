@@ -1,7 +1,7 @@
 var express = require('express');
 let mysql = require('mysql');
 var router = express.Router();
-let config = require('../database/configure.json');
+let config = require('../config/mysql.json');
 let check = require('../public/javascripts/check');
 
 let admin_cfg = config.admin;
