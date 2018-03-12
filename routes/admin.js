@@ -143,7 +143,7 @@ router.get('/', function(req, res){
                       var archiver = require('archiver');
 
                       // create a file to stream archive data to.
-                      var output = fs.createWriteStream('/tmp/works.zip');
+                      var output = fs.createWriteStream(config.zip_path + 'works.zip');
                       var archive = archiver('zip', {
                         zlib: { level: 9 } // Sets the compression level.
                       });
@@ -181,7 +181,7 @@ router.get('/', function(req, res){
                       archive.pipe(output);
                       archive.directory(store_path, false);
                       archive.finalize();
-                      res.download('/tmp/works.zip');
+                      res.download(config.zip_path + 'works.zip');
                     }
                 }
             });
