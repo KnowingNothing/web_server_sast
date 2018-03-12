@@ -9,12 +9,12 @@ let store_path = '/home/administer/SAST/contests/jiying/';///contests/jiying/';
 let storage = multer.diskStorage({
        destination: function (req, file, cb) {
            cb(null, store_path);
-      }, 
+      },
      filename: function (req, file, cb) {
 		 console.log(file.originalname);
          cb(null, "" + file.originalname);
      }
-    });  
+    });
 let upload = multer({
         storage: storage
 });
@@ -74,8 +74,8 @@ router.get('/contest', function(req, res){
                     if(flag)
                     {
                         let res_info = {
-                            id: id, 
-                            contest: contest, 
+                            id: id,
+                            contest: contest,
                             sign: true,
                             attend_confirm: info.attend_confirm,
                             prize: info.prize,
@@ -89,8 +89,8 @@ router.get('/contest', function(req, res){
                     else
                     {
                         res.render('contest_state', {
-                            id: id, 
-                            contest: contest, 
+                            id: id,
+                            contest: contest,
                             sign: false,
                             attend_confirm: -1,
                             prize: -1,
@@ -101,7 +101,7 @@ router.get('/contest', function(req, res){
                         });
                     }
                 });
-                
+
             }
     });
     }
@@ -175,16 +175,16 @@ router.get('/change_team_name', function(req, res){
 router.post('/upload', upload.single('file'), function(req, res){
     let id = req.query.id;
     let contest = req.query.contest;
-	console.log('a');
+	console.log('start to upload file');
     if(req.file)
     {
-		console.log('b');
         let name = req.file.originalname;
 		console.log('check : ' + name);
         let now = new Date();
         let fix = now.getFullYear()+'-'+(now.getMonth() + '1')+'-'+now.getDate()+'-'+now.getHours()+"-"+now.getMinutes()+"-"+now.getSeconds()+"-"+now.getMilliseconds();
-        fs.renameSync(store_path+name, store_path+id+'-'+fix+'-'+name);
-		console.log('done');
+        let newname = store_path+id+'-'+fix+'-'+name;
+        fs.renameSync(store_path+name, newname);
+		console.log('file rename done, new file name: ' + newname);
         check.handin_works(id, contest, function(done){
             if(!done)
             {
