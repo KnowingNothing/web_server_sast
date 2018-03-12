@@ -156,7 +156,7 @@ let already_sign_contest = function(id, contest, callback)
                                         }
                                     });
                                 }
-                            });                            
+                            });
                         }
                     });
                 }
@@ -171,7 +171,7 @@ let sign_contest = function(id, contest, callback)
     pool_admin.getConnection(function(err, conn){
         if(err){console.log(err);callback(false);}
         else
-        {   
+        {
             let team_id = -1;
             let contest_id = -1;
             let task1 = function(cb)
@@ -735,6 +735,40 @@ let get_id = function(number, university, callback)
     });
 }
 
+let get_group = function(id, contest, callback)
+{
+    pool_admin.getConnection(function(err, conn){
+        if(err)
+        {
+            console.log(err);
+            callback(false, null);
+        }
+        else
+        {
+            let sql = `select team from user_contest where id = ${id} and contest = ${contest};`;
+            conn.query(sql, function(err, rows){
+                if(err)
+                {
+                    console.log(err);
+                    callback(false, null);
+                }
+                else
+                {
+                    if(rows === undefined || rows.length < 1)
+                    {
+                        callback(false, null);
+                    }
+                    else
+                    {
+                        callback(true, rows[0].team);
+                    }
+                }
+            });
+            conn.release();
+        }
+    });
+}
+
 let add_member = function(id, contest, new_id, callback)
 {
     pool_admin.getConnection(function(err, conn){
@@ -1002,7 +1036,7 @@ let check_activity = function(id, activity, group, callback)
                             let flag1 = rows[0].team / group_ary[group] % 2;//的确报名了这一组
                             let flag2 = rows[0].attend_confirm / group_ary[group] % 2;//的确还没有签过到
                             if(flag1 >= 1 && flag2 < 1)
-                            {        
+                            {
                                 let sql = `update user_activity set attend_confirm=attend_confirm+${group_ary[group]} where id = ${id} and activity = ${activity_id};`;
                                 conn.query(sql, function(err){
                                     if(err)
@@ -1017,7 +1051,7 @@ let check_activity = function(id, activity, group, callback)
                                 });
                             }
                             else
-                            {                        
+                            {
                                 callback(false, "该志愿者未报名这一组或者已经签过到了");
                             }
                         }
@@ -1128,6 +1162,7 @@ module.exports = {
     add_member: add_member,
     get_id: get_id,
     get_university: get_university,
+    get_group: get_group,
     change_group: change_group,
     check_team: check_team,
     check_activity: check_activity,
