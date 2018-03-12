@@ -1,6 +1,6 @@
 extends layout
 
-block content  
+block content
   .featured-section
     .header-top.bg
     .container
@@ -41,7 +41,7 @@ block content
                   input(type="hidden" name="contest" value="#{detail}")
                   input(type="hidden" name="action" value="prize_contest")
                   input(type="hidden" name="prize" value="1")
-                  input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")  
+                  input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")
             form(action="/admin", method="get")
               .wecome-button
                   input.button.rotate2(type="submit" value="决定这个队伍得到二等奖")
@@ -57,12 +57,26 @@ block content
                   input(type="hidden" name="contest" value="#{detail}")
                   input(type="hidden" name="action" value="prize_contest")
                   input(type="hidden" name="prize" value="3")
-                  input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")  
-          .col-md-4.feature-accord  
+                  input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")
+          .col-md-4.feature-accord
+            form(action="/admin", method="get")
+              .wecome-button
+                  input.button.rotate2(type="submit" value="下载某个队伍作品")
+                  input(type="hidden" name="id" value="#{id}")
+                  input(type="hidden" name="contest" value="#{detail}")
+                  input(type="hidden" name="action" value="download_work_id")
+                  input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")
+                  form(action="/admin", method="get")
+              .wecome-button
+                  input.button.rotate2(type="submit" value="下载某个队伍作品")
+                  input(type="hidden" name="id" value="#{id}")
+                  input(type="hidden" name="contest" value="#{detail}")
+                  input(type="hidden" name="action" value="download_work_id")
+                  input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")
             .wecome-button
               a.button.rotate2(href='/admin/?id=#{id}&action=contests')
                 | 返回
-                span    
+                span
       else if(job==="activity")
         if(detail === "acm-school")
           h2 ACM校内赛志愿者管理
@@ -80,7 +94,7 @@ block content
             ul.topic_grid
               li.list1
                 h3.m_3 为志愿者签到
-                .clear5                  
+                .clear5
             if(detail === "acm-school")
               form(action="/admin", method="get")
                 .wecome-button
@@ -135,7 +149,7 @@ block content
             .wecome-button
               a.button.rotate2(href='/admin/?id=#{id}&action=volunteers')
                 | 返回
-                span 
+                span
   .testimonials#testimonials
     .wmuSlider.example1
   // //End-foote
@@ -145,5 +159,5 @@ block content
         p
           | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
           a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
-          | EECSSAST： 
-          a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST 
+          | EECSSAST：
+          a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST
