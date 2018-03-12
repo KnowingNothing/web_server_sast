@@ -40,8 +40,9 @@ router.get('/contests', function (req, res) {
   let id = req.query.id;
   let file_name = req.query.file_name;
   let ip_info = req.headers.remoteip || req.socket.remoteAddress;
-  let reg = /^[\d]+$/;
-  if(!reg.test(id))
+  let reg1 = /^[\d]+$/;
+  let reg2 = /[^\\]*\.(\w+)$/;
+  if(!reg2.test(file_name) || !reg1.test(id))
   {
       res.redirect('/login');
   }
