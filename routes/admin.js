@@ -153,6 +153,7 @@ router.get('/', function(req, res){
                       output.on('close', function() {
                         console.log(archive.pointer() + ' total bytes');
                         console.log('archiver has been finalized and the output file descriptor has closed.');
+                        res.download(config.zip_path + 'works.zip');
                       });
 
                       // This event is fired when the data source is drained no matter what was the data source.
@@ -181,7 +182,6 @@ router.get('/', function(req, res){
                       archive.pipe(output);
                       archive.directory(store_path, false);
                       archive.finalize();
-                      res.download(config.zip_path + 'works.zip');
                     }
                 }
             });
