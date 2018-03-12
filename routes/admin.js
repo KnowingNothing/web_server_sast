@@ -124,7 +124,7 @@ router.get('/', function(req, res){
                       let team_id = req.query.team_id;
                       check.get_file_name(team_id, function (done, file_name) {
                         console.log('file_name of ' + team_id + ' is ' + file_name);
-                        if(!done || file_name == 'null')
+                        if(!done || file_name == null)
                         {
                             res.render('error', {error: {}, message: "为队伍"+team_id+"获取文件失败，请重试（可能是并没有提交文件）", action:`/admin/?id=${id}&contest=${contest}&action=manage_contest`});
                         }
