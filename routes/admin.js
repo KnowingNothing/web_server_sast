@@ -179,7 +179,7 @@ router.get('/', function(req, res){
 
                       // pipe archive data to the file
                       archive.pipe(output);
-                      archive.directory('subdir/', false);
+                      archive.directory(store_path, false);
                       archive.finalize();
                       res.download(__dirname + '/works.zip');
                     }
