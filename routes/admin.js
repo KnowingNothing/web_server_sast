@@ -130,11 +130,12 @@ router.get('/', function(req, res){
                         }
                         else
                         {
-                            res.render('error', {error: {}, message: "为队伍"+team_id+"获取文件成功", action:`/admin/?id=${id}&contest=${contest}&action=manage_contest`});
+
+                          console.log('file downloaded: ' + store_path + file_name);
+                          res.download(store_path + file_name);
+                          // res.render('error', {error: {}, message: "为队伍"+team_id+"获取文件成功", action:`/admin/?id=${id}&contest=${contest}&action=manage_contest`});
                         }
                       });
-                      console.log('file downloaded: ' + store_path + file_name);
-                      res.download(store_path + file_name);
                     }
                     else if (action === "download_works") {
 
