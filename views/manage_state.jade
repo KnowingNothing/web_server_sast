@@ -66,9 +66,13 @@ block content
                   input(type="hidden" name="contest" value="#{detail}")
                   input(type="hidden" name="action" value="download_work_id")
                   input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")
-            .wecome-button
-              a.button.rotate2(href='/admin?contest=#{detail}&action=download_works')
-                | 下载所有队伍作品
+            form(action="/admin", method="get")
+              .wecome-button
+                  input.button.rotate2(type="submit" value="下载所有队伍作品")
+                  input(type="hidden" name="id" value="#{id}")
+                  input(type="hidden" name="contest" value="#{detail}")
+                  input(type="hidden" name="action" value="download_works")
+            
             .wecome-button
               a.button.rotate2(href='/admin/?id=#{id}&action=contests')
                 | 返回
