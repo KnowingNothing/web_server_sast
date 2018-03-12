@@ -1,5 +1,5 @@
 let mysql = require('mysql');
-let config = require('../config/mysql.json');
+let config = require('../../config/mysql.json');
 let async = require('async');
 
 let admin_cfg = config.admin;
