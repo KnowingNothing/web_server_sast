@@ -1096,7 +1096,7 @@ let handin_works = function(id, contest, name, callback)
                             let team_id = rows1[0].team;
                             let newname = store_path+team_id+'.'+name.split('.').slice(1).join('.');
                             fs.renameSync(store_path+name, newname);
-                            let sql = `update teams set other = ${id}, file_name = ''${newname}' where id = ${team_id};`;
+                            let sql = `update teams set other = ${id}, file_name = '${newname}' where id = ${team_id};`;
                             conn.query(sql, function(err){
                                 if(err)
                                 {
