@@ -1068,7 +1068,7 @@ let handin_works = function(id, contest, callback)
         if(err)
         {
             console.log(err);
-            callback(false);
+            callback(false, 0);
         }
         else
         {
@@ -1077,7 +1077,7 @@ let handin_works = function(id, contest, callback)
                 if(err)
                 {
                     console.log(err);
-                    callback(false);
+                    callback(false, 0);
                 }
                 else
                 {
@@ -1087,7 +1087,7 @@ let handin_works = function(id, contest, callback)
                         if(err)
                         {
                             console.log(err);
-                            callback(false);
+                            callback(false, 0);
                         }
                         else
                         {
@@ -1097,11 +1097,11 @@ let handin_works = function(id, contest, callback)
                                 if(err)
                                 {
                                     console.log(err);
-                                    callback(false);
+                                    callback(false, team_id);
                                 }
                                 else
                                 {
-                                    callback(true);
+                                    callback(true, team_id);
                                 }
                             });
                         }

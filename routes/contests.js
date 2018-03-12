@@ -180,18 +180,18 @@ router.post('/upload', upload.single('file'), function(req, res){
     {
         let name = req.file.originalname;
 		console.log('check : ' + name);
-        let now = new Date();
-        let fix = now.getFullYear()+'-'+(now.getMonth() + '1')+'-'+now.getDate()+'-'+now.getHours()+"-"+now.getMinutes()+"-"+now.getSeconds()+"-"+now.getMilliseconds();
-        let newname = store_path+id+'-'+fix+'-'+name;
-        fs.renameSync(store_path+name, newname);
-		console.log('file rename done, new file name: ' + newname);
-        check.handin_works(id, contest, function(done){
+        check.handin_works(id, contest, function(done, group_id){
             if(!done)
             {
                 res.render('error', {error: {}, message: "上传失败，请重试", action: `/contests/contest/?id=${id}&contest=${contest}`});
             }
             else
             {
+                //let now = new Date();
+                //let fix = now.getFullYear()+'-'+(now.getMonth() + '1')+'-'+now.getDate()+'-'+now.getHours()+"-"+now.getMinutes()+"-"+now.getSeconds()+"-"+now.getMilliseconds();
+                let newname = store_path+group_id+'-'+name;
+                fs.renameSync(store_path+name, newname);
+                console.log('file rename done, new file name: ' + newname);
                 res.render('error', {error: {}, message: "上传成功", action: `/contests/contest/?id=${id}&contest=${contest}`});
             }
         });
