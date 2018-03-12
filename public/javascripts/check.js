@@ -1,5 +1,5 @@
 let mysql = require('mysql');
-let config = require('../../database/configure.json');
+let config = require('../config/mysql.json');
 let async = require('async');
 
 let admin_cfg = config.admin;
@@ -1062,13 +1062,13 @@ let check_activity = function(id, activity, group, callback)
     });
 }
 
-let handin_works = function(id, contest, callback)
+let handin_works = function(id, contest, name, callback)
 {
     pool_admin.getConnection(function(err, conn){
         if(err)
         {
             console.log(err);
-            callback(false, 0);
+            callback(false);
         }
         else
         {
@@ -1077,7 +1077,7 @@ let handin_works = function(id, contest, callback)
                 if(err)
                 {
                     console.log(err);
-                    callback(false, 0);
+                    callback(false);
                 }
                 else
                 {
@@ -1087,21 +1087,23 @@ let handin_works = function(id, contest, callback)
                         if(err)
                         {
                             console.log(err);
-                            callback(false, 0);
+                            callback(false);
                         }
                         else
                         {
                             let team_id = rows1[0].team;
-                            let sql = `update teams set other = 1 where id = ${team_id};`;
+                            let newname = store_path+group_id+'.'+name.split('.').slice(1).join('.');
+                            fs.renameSync(store_path+name, newname);
+                            let sql = `update teams set other = ${id}, file_name = ${newname} where id = ${team_id};`;
                             conn.query(sql, function(err){
                                 if(err)
                                 {
                                     console.log(err);
-                                    callback(false, team_id);
+                                    callback(false);
                                 }
                                 else
                                 {
-                                    callback(true, team_id);
+                                    callback(true);
                                 }
                             });
                         }
