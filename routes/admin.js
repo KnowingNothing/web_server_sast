@@ -122,6 +122,7 @@ router.get('/', function(req, res){
                     else if (action === "download_work_id") {
                       // currently only support only one contest
                       let team_id = req.query.team_id;
+                      let contest = req.query.contest;
                       check.get_file_name(team_id, function (done, file_name) {
                         console.log('file_name of ' + team_id + ' is ' + file_name);
                         if(!done || file_name == null)
