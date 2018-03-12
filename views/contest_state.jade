@@ -1,6 +1,6 @@
 extends layout
 
-block content  
+block content
   .featured-section
     .header-top.bg
     .container
@@ -25,7 +25,7 @@ block content
               div
                 input#label-1(name='lida', type='radio', checked='')
                 label#item1(for='label-1')
-                  i.ferme  
+                  i.ferme
                   span.m_5 比赛报名
                   i.icon-plus-sign.i-right1
                   i.icon-minus-sign.i-right2
@@ -42,8 +42,8 @@ block content
                         | 比赛报名入口将在2018年3月开放。
                         | 请在规定时间内完成报名，如果您还没有报名，请在右侧填写报名信息。
                         | 比赛报名后请继续关注比赛动态，按时参加比赛。
-                      
-                    .clearfix  
+
+                    .clearfix
               div
                 input#label-2(name='lida', type='radio')
                 label#item2(for='label-2')
@@ -63,7 +63,7 @@ block content
                           | 比赛组队人员限制将尽快公布。
                           | 所有参赛人员应先注册并报名，然后选择加入一支队伍加入或者自己组建新的队伍，
                           | 请在右侧进行操作。
-                    .clearfix  
+                    .clearfix
               div
                 input#label-3(name='lida', type='radio')
                 label#item3(for='label-3')
@@ -83,7 +83,7 @@ block content
                         | 计算机应用设计大赛分为校内初赛、市级复赛和全国总决赛。
                         | 初赛尚未开始。
                         | 初赛预计将在2018年4月择期举行，请关注比赛动态，不要错过比赛时间。
-                    .clearfix  
+                    .clearfix
               div
                 input#label-4(name='lida', type='radio')
                 label#item4(for='label-4')
@@ -103,7 +103,7 @@ block content
                         | 计算机应用设计大赛分为校内初赛、市级复赛和全国总决赛。
                         | 初赛尚未开始。
                         | 初赛预计将在北京大学校内举行，地点尚未确定，请关注比赛动态，获悉比赛地点。
-                    .clearfix  
+                    .clearfix
               div
                 input#label-5(name='lida', type='radio')
                 label#item5(for='label-5')
@@ -132,7 +132,7 @@ block content
                 label#item-1-6(for='label-1-6')
                   if(contest === "acm")
                     i#i5.icon-trophy
-                    | 颁奖仪式 
+                    | 颁奖仪式
                   else if(contest === "jiying")
                     i#i5.icon-trophy
                     | 比赛成绩及奖励
@@ -160,7 +160,7 @@ block content
                 div
                   input#label-6(name='my_state', type='radio', checked='')
                   label#item6(for='label-6')
-                    i.ferme  
+                    i.ferme
                     span.m_5 报名
                     i.icon-plus-sign.i-right1
                     i.icon-minus-sign.i-right2
@@ -170,7 +170,7 @@ block content
                         p
                           | 您已经报名成功。
                           | 您的id是：#{id}
-                      .clearfix  
+                      .clearfix
                 div
                   input#label-7(name='my_state', type='radio')
                   label#item7(for='label-7')
@@ -191,10 +191,10 @@ block content
                            您所在的队伍id为：#{team_id}<br>
                            您所在的队伍的成员包括：<br>
                            #{member_info}
-                      .clearfix  
+                      .clearfix
                 div
                   input#label-8(name='my_state', type='radio')
-                  label#item8(for='label-8')                
+                  label#item8(for='label-8')
                     i#i3.icon-trophy
                     if(contest === "acm")
                       | 参赛情况
@@ -219,9 +219,10 @@ block content
                         if(other > 0)
                           p
                             | 您已经上传过作品
+                            | #file_name
                         else if(other < 0)
                           p
-                            | 您尚未上传作品  
+                            | 您尚未上传作品
                       .clearfix
                 div
                   input#label-9(name='my_state', type='radio')
@@ -261,8 +262,8 @@ block content
                             | 比赛已经结束，您没有参加比赛，如果有问题，请向我们反映。
                         else if(attend_confirm < 0)
                           p
-                            | 比赛尚未开始，请关注比赛时间不要错过。 
-                      .clearfix  
+                            | 比赛尚未开始，请关注比赛时间不要错过。
+                      .clearfix
                 if(contest === "jiying")
                   div
                     input#label-10(name='my_state', type='radio')
@@ -338,7 +339,7 @@ block content
                 .clear5
                 form(action="/contests/upload/?id=#{id}&contest=#{contest}" method="post" enctype="multipart/form-data")
                   .wecome-button
-                    input.upload(type="file" name="file")                
+                    input.upload(type="file" name="file")
                     input.button.rotate2(type="submit" value="提交")
                 p#fileName
                 script.
@@ -368,7 +369,7 @@ block content
               span
             div
               section
-                form(action="", method="post")                  
+                form(action="", method="post")
           .col-md-4.feature-accord
             .wecome-button
               a.button.rotate2(href='/contests/?id=#{id}')
@@ -380,5 +381,5 @@ block content
         p
           | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
           a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
-          | EECSSAST： 
+          | EECSSAST：
           a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST
