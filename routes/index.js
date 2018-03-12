@@ -1,7 +1,7 @@
 var express = require('express');
 let mysql = require('mysql');
 var router = express.Router();
-let config = require('../database/configure.json');
+let config = require('../config/mysql.json');
 let check = require('../public/javascripts/check');
 
 let admin_cfg = config.admin;
@@ -106,7 +106,7 @@ router.post('/login', function(req, res){
                 }
               });
             }
-          });        
+          });
         }
       });
       conn.release();
@@ -124,7 +124,7 @@ router.post('/register', function(req, res){
   email = req.body.email;
   phone_number = req.body.phone_number;
   gender = req.body.gender;
-  
+
   pool_admin.getConnection(function(err, conn){
     if(err){console.log(err);}
     else
@@ -136,7 +136,7 @@ router.post('/register', function(req, res){
         {
           if(rows === undefined || rows.length < 1)
           {
-            let sql = `insert into users(name,number,school,university,password,email,phone_number,gender) 
+            let sql = `insert into users(name,number,school,university,password,email,phone_number,gender)
             values('${name}',${number},'${school}',${university},'${password}','${email}',${phone_number},${gender});`;
             conn.query(sql, function(err){
               if(err){console.log(err);}
@@ -152,7 +152,7 @@ router.post('/register', function(req, res){
                   {
                     res.render('error', {error: {}, message: `注册成功，您的id是${rows1[0].id}，请牢记`, action: "/"});
                   }
-                });                
+                });
               }
             });
           }
@@ -161,10 +161,10 @@ router.post('/register', function(req, res){
             res.render('register', {message: "该同学已经注册"});
           }
         }
-      });      
+      });
       conn.release();
     }
-  });  
+  });
 });
 
 router.get('/logout', function(req, res){

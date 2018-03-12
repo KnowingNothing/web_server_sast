@@ -1,11 +1,11 @@
 let express = require('express');
 let router = express.Router();
 let mysql = require('mysql');
-let config = require('../database/configure.json');
+let config = require('../config/mysql.json');
 let check = require('../public/javascripts/check');
 let fs = require('fs');
 let multer = require('multer');
-let store_path = '/home/administer/SAST/contests/jiying/';///contests/jiying/';
+let store_path = config.store_path;///contests/jiying/';
 let storage = multer.diskStorage({
        destination: function (req, file, cb) {
            cb(null, store_path);
@@ -180,7 +180,7 @@ router.post('/upload', upload.single('file'), function(req, res){
     {
         let name = req.file.originalname;
 		console.log('check : ' + name);
-        check.handin_works(id, contest, function(done, group_id){
+        check.handin_works(id, contest, name, function(done){
             if(!done)
             {
                 res.render('error', {error: {}, message: "上传失败，请重试", action: `/contests/contest/?id=${id}&contest=${contest}`});
@@ -190,7 +190,7 @@ router.post('/upload', upload.single('file'), function(req, res){
                 //let now = new Date();
                 //let fix = now.getFullYear()+'-'+(now.getMonth() + '1')+'-'+now.getDate()+'-'+now.getHours()+"-"+now.getMinutes()+"-"+now.getSeconds()+"-"+now.getMilliseconds();
                 // let newname = store_path+group_id+'-'+name;
-                let newname = store_path+group_id+'.'+name.split('.').slice(1).join('.');
+                //let newname = store_path+group_id+'.'+name.split('.').slice(1).join('.');
                 fs.renameSync(store_path+name, newname);
                 console.log('file rename done, new file name: ' + newname);
                 res.render('error', {error: {}, message: "上传成功", action: `/contests/contest/?id=${id}&contest=${contest}`});
