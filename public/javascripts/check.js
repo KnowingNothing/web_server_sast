@@ -4,6 +4,7 @@ let async = require('async');
 
 let admin_cfg = config.admin;
 let guest_cfg = config.guest;
+let store_path = config.store_path;
 
 let pool_admin = mysql.createPool(admin_cfg);
 let pool_guest = mysql.createPool(guest_cfg);
