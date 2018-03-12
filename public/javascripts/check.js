@@ -135,7 +135,7 @@ let already_sign_contest = function(id, contest, callback)
                         else
                         {
                             let team_id = rows1[0].team;
-                            let sql = `select other,team_name,attend_confirm,prize from teams where id = ${rows1[0].team};`;
+                            let sql = `select other,team_name,attend_confirm,prize,file_name from teams where id = ${rows1[0].team};`;
                             conn.query(sql, function(err, rows2){
                                 if(err){console.log(err);callback(false, null);}
                                 else
@@ -154,7 +154,14 @@ let already_sign_contest = function(id, contest, callback)
                                             {
                                                 member_info = member_info + rows3[i].name + ' ';
                                             }
-                                            callback(true, {attend_confirm: rows2[0].attend_confirm, prize: rows2[0].prize, other: rows2[0].other, team_name: rows2[0].team_name, team_id: team_id, member_info: member_info});
+                                            callback(true,
+                                              {attend_confirm: rows2[0].attend_confirm,
+                                              prize: rows2[0].prize,
+                                              other: rows2[0].other,
+                                              team_name: rows2[0].team_name,
+                                              team_id: team_id,
+                                              member_info: member_info,
+                                              file_name: rows2[0].file_name});
                                         }
                                     });
                                 }

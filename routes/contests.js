@@ -82,7 +82,8 @@ router.get('/contest', function(req, res){
                             team_name: info.team_name,
                             team_id: info.team_id,
                             member_info: info.member_info,
-                            other: info.other
+                            other: info.other,
+                            file_name: info.file_name
                         };
                         res.render('contest_state', res_info);
                     }
@@ -97,7 +98,8 @@ router.get('/contest', function(req, res){
                             team_name: -1,
                             team_id: -1,
                             member_info: '',
-                            other: -1
+                            other: -1,
+                            file_name: 'Undefined'
                         });
                     }
                 });
