@@ -58,8 +58,8 @@ router.get('/contests', function (req, res) {
           else
           {
             if (file_name === undefined) res.redirect('/login');
-            console.log('file downloaded: ' + store_path + filename);
-            res.download(store_path + filename);
+            console.log('file downloaded: ' + store_path + file_name);
+            res.download(store_path + file_name);
           }
   });
   }
