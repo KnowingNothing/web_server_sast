@@ -744,6 +744,40 @@ let get_id = function(number, university, callback)
     });
 }
 
+let get_file_name = function(group_id, callback)
+{
+    pool_admin.getConnection(function(err, conn){
+        if(err)
+        {
+            console.log(err);
+            callback(false, null);
+        }
+        else
+        {
+            let sql = `select file_name from teams where id = ${group_id}`;
+            conn.query(sql, function(err, rows){
+                if(err)
+                {
+                    console.log(err);
+                    callback(false, null);
+                }
+                else
+                {
+                    if(rows === undefined || rows.length < 1)
+                    {
+                        callback(false, null);
+                    }
+                    else
+                    {
+                        callback(true, rows[0].file_name);
+                    }
+                }
+            });
+            conn.release();
+        }
+    });
+}
+
 let get_group = function(id, contest, callback)
 {
     pool_admin.getConnection(function(err, conn){
@@ -1176,6 +1210,7 @@ module.exports = {
     get_id: get_id,
     get_university: get_university,
     get_group: get_group,
+    get_file_name:get_file_name,
     change_group: change_group,
     check_team: check_team,
     check_activity: check_activity,

@@ -6,6 +6,7 @@ let check = require('../public/javascripts/check');
 
 let admin_cfg = config.admin;
 let guest_cfg = config.guest;
+let store_path = config.store_path;
 
 pool_admin = mysql.createPool(admin_cfg);
 pool_guest = mysql.createPool(guest_cfg);
@@ -19,7 +20,7 @@ router.get('/', function(req, res){
     }
     else
     {
-        let ip_info = req.headers.remoteip || req.socket.remoteAddress; 
+        let ip_info = req.headers.remoteip || req.socket.remoteAddress;
         let now = new Date();
         let timestamp = now.getTime();
         let id = req.query.id;
@@ -118,6 +119,26 @@ router.get('/', function(req, res){
                             }
                         });
                     }
+                    else if (action === "download_work_id") {
+                      // currently only support only one contest
+                      let team_id = req.query.team_id;
+                      check.get_file_name(team_id, function (done, file_name) {
+                        console.log('file_name of ' + team_id + ' is ' + file_name);
+                        if(!done || file_name == 'NULL')
+                        {
+                            res.render('error', {error: {}, message: "为队伍"+team_id+"获取文件失败，请重试（可能是并没有提交文件）", action:`/admin/?id=${id}&contest=${contest}&action=manage_contest`});
+                        }
+                        else
+                        {
+                            res.render('error', {error: {}, message: "为队伍"+team_id+"获取文件成功", action:`/admin/?id=${id}&contest=${contest}&action=manage_contest`});
+                        }
+                      });
+                      console.log('file downloaded: ' + store_path + file_name);
+                      res.download(store_path + file_name);
+                    }
+                    else if (action === "download_works") {
+
+                    }
                 }
             });
         }
@@ -189,7 +210,7 @@ router.post('/login', function(req, res){
                                 }
                                 });
                             }
-                        });        
+                        });
                     }
                 }
             });
