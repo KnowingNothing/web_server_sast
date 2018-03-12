@@ -190,7 +190,7 @@ router.post('/upload', upload.single('file'), function(req, res){
                 //let now = new Date();
                 //let fix = now.getFullYear()+'-'+(now.getMonth() + '1')+'-'+now.getDate()+'-'+now.getHours()+"-"+now.getMinutes()+"-"+now.getSeconds()+"-"+now.getMilliseconds();
                 // let newname = store_path+group_id+'-'+name;
-                let newname = store_path+group_id;
+                let newname = store_path+group_id+'.'+name.split('.').slice(1).join('.');
                 fs.renameSync(store_path+name, newname);
                 console.log('file rename done, new file name: ' + newname);
                 res.render('error', {error: {}, message: "上传成功", action: `/contests/contest/?id=${id}&contest=${contest}`});
