@@ -1,6 +1,7 @@
 let mysql = require('mysql');
 let config = require('../../config/mysql.json');
 let async = require('async');
+let fs = require('fs');
 
 let admin_cfg = config.admin;
 let guest_cfg = config.guest;
