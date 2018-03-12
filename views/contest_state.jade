@@ -220,9 +220,7 @@ block content
                           p
                             | 您已经上传过作品（文件名是队伍id）：<strong> #{file_name} </strong>
                             | <br>
-                            <a href="/download/contests?file_name=#{file_name}">
-                              <button>下载之前上交的文件</button>
-                            </a>
+                            a(href="/download/contests?file_name=#{file_name}") button 下载之前上交的文件
                         else if(other < 0)
                           p
                             | 您尚未上传作品
