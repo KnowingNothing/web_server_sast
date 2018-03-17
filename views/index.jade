@@ -2,21 +2,24 @@ extends layout
 
 block content
   input#id(type="hidden" value="#{id}")
+  // header
+  .header-section
+    // log-and-register
     script.
       var id = document.getElementById("id");
       id = id.value;
       if(id>0) {
         $('#right_nav').empty();
         $('#right_nav').append(`<ul class='login'>
-          <li class='login right'><a class='login' href='#'>欢迎您</a></li>
-          <li class='login right'><a class='login' href='/logout/?id=${id}'>退出登录</a></li>
+          <li class='login'><a class='login' href='#'>欢迎您</a></li>
+          <li class='login'><a class='login' href='/logout/?id=${id}'>退出登录</a></li>
           </ul>`);
       } else {
         $('#right_nav').empty();
         $('#right_nav').append(`<ul class='login'>
-          <li class='login right'><a class='login' href='/admin/?action=login'>管理登录</a></li>
-          <li class='login right'><a class='login' href='/login'>普通登录</a></li>
-          <li class='login right'><a class='login' href='/register'>注册</a></li>
+          <li class='login'><a class='login' href='/admin/?action=login'>管理登录</a></li>
+          <li class='login'><a class='login' href='/login'>普通登录</a></li>
+          <li class='login'><a class='login' href='/register'>注册</a></li>
           </ul>`);
       }
     .header-top
@@ -69,6 +72,7 @@ block content
           });
         });
       .clearfix
+    // end-of-header
   #Welcome
     .container
       .wecome-main
