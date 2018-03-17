@@ -5,78 +5,13 @@ block content
   // header
   .header-section
     // log-and-register
-    script.
-      var id = document.getElementById("id");
-      id = id.value;
-      if(id>0) {
-        $('#right_nav').empty();
-        $('#right_nav').append(`<ul class='login'>
-          <li class='login'><a class='login' href='#'>欢迎您</a></li>
-          <li class='login'><a class='login' href='/logout/?id=${id}'>退出登录</a></li>
-          </ul>`);
-      } else {
-        $('#right_nav').empty();
-        $('#right_nav').append(`<ul class='login'>
-          <li class='login'><a class='login' href='/admin/?action=login'>管理登录</a></li>
-          <li class='login'><a class='login' href='/login'>普通登录</a></li>
-          <li class='login'><a class='login' href='/register'>注册</a></li>
-          </ul>`);
-      }
     .header-top
-    .container
-      // logo
-      .logo
-          img(src="/images/logo.png" alt="")
-      // top-navigator
-      .sub-header
-        .top-nav.index
-          span.menu
-          ul
-            li.active
-              if(admin)
-                a(href="/admin/?id=#{id}&action=home") Home
-              else
-                a(href="/?id=#{id}") Home
-            li
-              if(admin)
-                a(href="/admin/?id=#{id}&action=about_us") About Us
-              else
-                a(href="/about_us/?id=#{id}") About Us
-            li
-              if(admin)
-                a(href="/admin/?id=#{id}&action=contests") Contests
-              else
-                a(href="/contests/?id=#{id}") Contests
-            li
-              if(admin)
-                a(href="/admin/?id=#{id}&action=volunteers") Volunteers
-              else
-                a(href="/volunteers/?id=#{id}") Volunteers
-            li
-              if(admin)
-                a(href="/admin/?id=#{id}&action=downloads") Downloads
-              else
-                a(href="/downloads/?id=#{id}") Downloads
-            li
-              if(admin)
-                a(href="/admin/?id=#{id}&action=join_us") Join Us
-              else
-                a(href="/about_us/join_us/?id=#{id}") Join Us
-            .clearfix
-      .clearfix
-      // script-for-menu
-      script.
-        $(document).ready(function(){
-          $("span.menu").click(function(){
-            $(".top-nav ul").slideToggle(200);
-          });
-        });
-      .clearfix
-    // end-of-header
+    .row
+
   #Welcome
-    .container
+    .row.card-panel.hoverable
       .wecome-main
-        .col-md-6.wecome-text
+        .col.s6.wecome-text
           h1 欢迎您来到科协
           span
             |我们专注于承办校级比赛与组织志愿者活动
@@ -93,16 +28,16 @@ block content
             // TODO
             //a.button.rotate2(href="#") Read More
               span
-        .col-md-6.wecome-img
+        .col.s6
           // TODO
-          img(src="/images/颁奖仪式合照.jpg" alt="颁奖仪式合照")
+          img.responsive-img(src="/images/颁奖仪式合照.jpg" alt="颁奖仪式合照")
         .clearfix
   // end-of-welcome
-  .featured-section
-    .container
+  .featured-section.card-panel.hoverable
+    .row
       h2 最新动态
       .featured-main
-        .col-md-4.feature-text
+        .col.s4.feature-text
           // TODO
           img(src="/images/DSC03902.JPG" alt="志愿者在赛场工作" width="300px" height="200px")
           h3
@@ -116,7 +51,7 @@ block content
             // TODO
             //a.button.rotate2(href="#") Read More
               span
-        .col-md-4.feature-text
+        .col.s4.feature-text
           img(src="/images/timg.jpg" alt="ACM标志" width="300px" height="200px")
           h3
             |新的比赛正在筹备
@@ -127,7 +62,7 @@ block content
             // TODO
             //a.button.rotate2(href="#") Read More
               span
-        .col-md-4.feature-text
+        .col.s4.feature-text
           img(src="/images/DSC03583.JPG" alt="ACM赛场" width="300px" height="200px")
           h3
             |志愿活动火热招募
@@ -143,12 +78,3 @@ block content
   .testimonials#testimonials
     .wmuSlider.example1
   // //End-foote
-  .copy-right-section
-    .container
-      .col-md-6.copy-right
-        p
-          | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
-          a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
-          | EECSSAST：
-          a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST
-          span(style="padding:0;") #{count}
