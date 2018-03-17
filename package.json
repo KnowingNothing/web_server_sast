@@ -17,6 +17,6 @@
     "multer": "~1.3.0",
     "mysql": "~2.15.0",
     "nodemon": "^1.17.2",
-    "serve-favicon": "~2.4.5",
+    "serve-favicon": "~2.4.5"
   }
 }
