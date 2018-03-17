@@ -1,21 +1,58 @@
 doctype html
-html
+html(lang='en')
   head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1.0')
     title 科协网站
-    meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    link(rel="stylesheet" href="/stylesheets/bootstrap.css")
-    link(rel="stylesheet" href="/stylesheets/style.css")
-    script(src="/javascripts/jquery-1.8.3.min.js")
-    link(rel="stylesheet" href="/stylesheets/materialize.min.css")
-    script(type="application/javascript").
-      addEventListener("load", function(){setTimeout(hideURLbar, 0);}, false);
-      function hideURLbar(){
-        window.scrollTo(0,1);
-      }
-    // web font
-    //link(href="https://fonts.googleapis.com/ css?family=Open+Sans:400italic,600italic,700italic,400,300,600,700,800" rel="stylesheet")
-    //link(href="https://fonts.googleapis.com/ css?family=Droid+Serif:400,400italic,700italic" rel="stylesheet")
-    block script
+    // CSS
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(href='/stylesheets/materialize.min.css', type='text/css', rel='stylesheet', media='screen,projection')
+    // Scripts
+    script(src='/javascripts/jquery-1.8.3.min.js')
+    script(src='/javascripts/materialize.min.js')
   body
-    block content
+    nav.light-blue.lighten-1(role='navigation')
+      .nav-wrapper.container
+        a#logo-container.brand-logo(href='#') EECSSAST
+        ul.right.hide-on-med-and-down
+          li
+            a(href='#') Navbar Link
+        ul#nav-mobile.side-nav
+          li
+            a(href='#') Navbar Link
+        a.button-collapse(href='#', data-activates='nav-mobile')
+          i.material-icons menu
+
+    footer.page-footer.orange
+      .container
+        .row
+          .col.l6.s12
+            h5.white-text Company Bio
+            p.grey-text.text-lighten-4
+              | We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
+          .col.l3.s12
+            h5.white-text Settings
+            ul
+              li
+                a.white-text(href='#!') Link 1
+              li
+                a.white-text(href='#!') Link 2
+              li
+                a.white-text(href='#!') Link 3
+              li
+                a.white-text(href='#!') Link 4
+          .col.l3.s12
+            h5.white-text Connect
+            ul
+              li
+                a.white-text(href='#!') Link 1
+              li
+                a.white-text(href='#!') Link 2
+              li
+                a.white-text(href='#!') Link 3
+              li
+                a.white-text(href='#!') Link 4
+      .footer-copyright
+        .container
+          | Made with ❤ by EECSSAST
+          a.orange-text.text-lighten-3(href='http://eecskexie.com') 2018
