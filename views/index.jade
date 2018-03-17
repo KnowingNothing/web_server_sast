@@ -2,7 +2,6 @@ extends layout
 
 block content
   input#id(type="hidden" value="#{id}")
-  // header
     script.
       var id = document.getElementById("id");
       id = id.value;
@@ -70,7 +69,6 @@ block content
           });
         });
       .clearfix
-    // end-of-header
   #Welcome
     .container
       .wecome-main
