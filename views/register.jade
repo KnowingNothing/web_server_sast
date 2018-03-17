@@ -4,6 +4,7 @@ html
     meta(charset='UTF-8')
     title 注册账号
     link(type='text/css' href="/stylesheets/log-style.css" rel="stylesheet")
+    link(rel="stylesheet" href="/stylesheets/materialize.min.css")
     script(type="application/javascript").
       function check_empty(val, initial_val)
       {
@@ -15,7 +16,7 @@ html
       }
       function check_email(email)
       {
-          var split_email = email.split('@');        
+          var split_email = email.split('@');
           if(split_email.length !== 2)
           {
               return false;
