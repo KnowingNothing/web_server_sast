@@ -10,15 +10,15 @@ block content
       if(!admin)
         form.col.s12(action='/login', name='f', method='post')
           .input-field.col.s6
-            input.validate(id="输入学号" type="text" required placeholder="输入学号" data-error="请输入学号" data-success="right")
+            input.validate(name='number' id="输入学号" type="text" required placeholder="输入学号" data-error="请输入学号" data-success="right")
             label(for="学号")
               | 学号
           .input-field.col.s6
-            input.validate(id="password" type="password" required placeholder="输入密码" data-error="请输入密码" data-success="right")
+            input.validate(name='password' id="password" type="password" required placeholder="输入密码" data-error="请输入密码" data-success="right")
             label(for="password")
               | Password
           .input-field.col.s12
-            select
+            select(name="university" value = "-1")
               option(value="1" selected="selected")
                 | 北京大学
               option(value="2")
@@ -46,11 +46,11 @@ block content
         // 下面是管理员登录
         form.col.s12(action='/admin/login', name='f', method='post')
         .input-field.col.s6
-          input.validate(id="输入学号" type="text" required placeholder="输入学号" data-error="请输入学号" data-success="right")
+          input.validate(name='number' id="输入学号" type="text" required placeholder="输入学号" data-error="请输入学号" data-success="right")
           label(for="学号")
             | 学号
         .input-field.col.s6
-          input.validate(id="password" type="password" required placeholder="输入管理员密码" data-error="请输入管理员密码" data-success="right")
+          input.validate(name='password' id="password" type="password" required placeholder="输入管理员密码" data-error="请输入管理员密码" data-success="right")
           label(for="password")
             | Password
         input(type="hidden" value="1" name="university")
