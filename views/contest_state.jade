@@ -165,40 +165,6 @@ block content
                           p
                             | 比赛尚未开始，请关注比赛时间不要错过。
 
-                   li
-                    .collapsible-header.active
-                      if(contest === "acm")
-                        | 比赛成绩
-                      else if(contest === "jiying")
-                        | 参赛情况
-                    .collapsible-body
-                      if(contest === "acm")
-                        if(prize < 0)
-                          p
-                            | 成绩尚未公布
-                        else if(prize === 1)
-                          p
-                            | 恭喜，您获得了一等奖。
-                        else if(prize === 2)
-                          p
-                            | 恭喜，您获得了二等奖。
-                        else if(prize === 3)
-                          p
-                            | 恭喜，您获得了三等奖。
-                        else
-                          p
-                            | 很遗憾，您没有获得奖项。
-                      else if(contest === "jiying")
-                        if(attend_confirm > 0)
-                          p
-                            | 您已经参加了比赛。
-                        else if(attend_confirm === 0)
-                          p
-                            | 比赛已经结束，您没有参加比赛，如果有问题，请向我们反映。
-                        else if(attend_confirm < 0)
-                          p
-                            | 比赛尚未开始，请关注比赛时间不要错过。
-                      .clearfix
                 if(contest === "jiying")
                   li
                     .collapsible-header.active
@@ -240,7 +206,7 @@ block content
                   h3.m_3 在这里上传作品
                 .clear5
                 form(action="/contests/upload/?id=#{id}&contest=#{contest}" method="post" enctype="multipart/form-data")
-                    input.upload(type="file" name="file")
+                    input.button.btn.waves-effect.waves-light.upload(type="file" name="file")
                     input.button.btn.waves-effect.waves-light.rotate2(type="submit" value="提交")
                 p#fileName
                 script.
