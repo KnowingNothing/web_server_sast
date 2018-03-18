@@ -18,7 +18,7 @@ block content
         h2 计算机应用设计大赛
       .row
         .col.s4
-          ul.card-pane.red.hoverable
+          ul
             li.list1
               h3 赛事状态
               if(contest === "acm")
@@ -80,7 +80,7 @@ block content
                       | 初赛预计将在北京大学校内举行，地点尚未确定，请关注比赛动态，获悉比赛地点。
         if(sign)
           .col.s4
-            ul.card-pane.red.hoverable
+            ul
               li.list1
                 h3.m_3 您的状态
                 ul.collapsible.popout(data-collapsible="accordion")
@@ -221,7 +221,7 @@ block content
                             | 很遗憾，您没有获得奖项。
 
           .col.s4
-            ul.card-pane.red.hoverable
+            ul
               li.list1
                 h3 在这里更改队伍信息
             form(action="/contests/change_team_name", method="get")
