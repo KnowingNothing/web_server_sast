@@ -3,14 +3,14 @@ extends layout
 block content
     .container
       if(contest === "acm")
-        .blockquote
+        blockquote
           | 注意比赛尚未开始报名，一切操作都不会保存
         script.
           Materialize.toast('注意比赛尚未开始报名，一切操作都不会保存', 5000, 'rounded')
         //  alert('注意比赛尚未开始报名，一切操作都不会保存')
         h2 ACM校内赛
       else if(contest === "jiying")
-        .blockquote
+        blockquote
           | 注意比赛尚未开始报名，一切操作都不会保存
         script.
           Materialize.toast('注意比赛尚未开始报名，一切操作都不会保存', 5000, 'rounded')
@@ -126,8 +126,8 @@ block content
                           p
                             | 您已经上传过作品（文件名是队伍id）：<strong> #{file_name} </strong>
                             | <br>
-                            a(href="/downloads/contests?id=#{id}&file_name=#{file_name}")
-                              button 下载之前上传的文件
+                            a.button.btn.waves-effect.waves-light(href="/downloads/contests?id=#{id}&file_name=#{file_name}")
+                              下载之前上传的文件
                         else if(other < 0)
                           p
                             | 您尚未上传作品
