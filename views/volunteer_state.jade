@@ -5,10 +5,10 @@ block content
     .container
       if(activity==="acm-school")
         blockquote
-          | 注意比赛尚未开始报名，一切操作都不会保存
+          | 注意活动尚未开始报名，一切操作都不会保存
         script.
-          Materialize.toast('注意比赛尚未开始报名，一切操作都不会保存', 5000, 'rounded')
-      //  alert('注意比赛尚未开始报名，一切操作都不会保存')
+          Materialize.toast('注意活动尚未开始报名，一切操作都不会保存', 5000, 'rounded')
+          //  alert('注意活动尚未开始报名，一切操作都不会保存')
         h2 ACM校内赛志愿者
         .row
           .col.s4
@@ -102,7 +102,7 @@ block content
                           | 工作尚未安排。报酬未知。
                       .clearfix
           if(sign)
-            .col-md-4.feature-accord
+            .col.s4.feature-accord
               ul.topic_grid
                 li.list1
                   h3.m_3 您的志愿小组报名情况
@@ -138,7 +138,7 @@ block content
                 a.button.rotate2(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=2')
                   | 点击加入第三组
                   span
-            .col-md-4.feature-accord
+            .col.s4.feature-accord
               ul.topic_grid
                 li.list1
                   h3.m_3 您的活动情况
@@ -204,21 +204,13 @@ block content
                   | 返回
                   span
           else
-            .col-md-4.feature-accord
+            .col.s4.feature-accord
               .wecome-button
               a.button.rotate2(href='/volunteers/volunteer/sign/?id=#{id}&activity=#{activity}')
                 | 点击参加志愿活动
                 span
-            .col-md-4.feature-accord
+            .col.s4.feature-accord
               .wecome-button
                 a.button.rotate2(href='/volunteers/?id=#{id}')
                   | 返回
                   span
-  .copy-right-section
-    .container
-      .col-md-6.copy-right
-        p
-          | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
-          a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
-          | EECSSAST：
-          a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST
