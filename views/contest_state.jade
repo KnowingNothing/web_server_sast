@@ -21,77 +21,77 @@ block content
           ul
             li.list1
               h3 赛事状态
-                ul.collapsible.popout(data-collapsible="accordion")
-                  li
-                    .collapsible-header.active
-                      赛前组队
-                    .collapsible-body
-                      if(contest === "acm")
-                        p
-                          | 比赛允许1-3人组队，所有参赛人员应先注册并报名，然后选择加入一支队伍加入或者自己组建新的队伍，
-                          | 请在右侧进行操作。报名后会自动分配到一个默认队伍，请自行更改队伍名字或者加入新的队伍。
-                      else if(contest === "jiying")
-                        p
-                          | 比赛组队人员限制将尽快公布。
-                          | 所有参赛人员应先注册并报名，然后选择加入一支队伍加入或者自己组建新的队伍，
-                          | 请在右侧进行操作。
-                  li
-                    .collapsible-header
-                      | 比赛时间
-                    .collapsible-body
-                      if(contest === "acm")
-                        p
-                          | ACM校内赛尚未开始。
-                          | 比赛预计将在2018年5月择期举行，请关注比赛动态，不要错过比赛时间
-                      else if(contest === "jiying")
-                        p
-                          | 计算机应用设计大赛分为校内初赛、市级复赛和全国总决赛。
-                          | 初赛尚未开始。
-                          | 初赛预计将在2018年4月择期举行，请关注比赛动态，不要错过比赛时间。
-                  li
-                    .collapsible-header
-                      | 比赛地点
-                    .collapsible-body
-                      if(contest === "acm")
-                        p
-                          | ACM校内赛尚未开始。
-                          | 比赛预计将在北京大学计算机机房举行，请关注比赛动态，获悉比赛地点
-                      else if(contest === "jiying")
-                        p
-                          | 计算机应用设计大赛分为校内初赛、市级复赛和全国总决赛。
-                          | 初赛尚未开始。
-                          | 初赛预计将在北京大学校内举行，地点尚未确定，请关注比赛动态，获悉比赛地点。
+              ul.collapsible.popout(data-collapsible="accordion")
+                li
+                  .collapsible-header.active
+                    赛前组队
+                  .collapsible-body
+                    if(contest === "acm")
+                      p
+                        | 比赛允许1-3人组队，所有参赛人员应先注册并报名，然后选择加入一支队伍加入或者自己组建新的队伍，
+                        | 请在右侧进行操作。报名后会自动分配到一个默认队伍，请自行更改队伍名字或者加入新的队伍。
+                    else if(contest === "jiying")
+                      p
+                        | 比赛组队人员限制将尽快公布。
+                        | 所有参赛人员应先注册并报名，然后选择加入一支队伍加入或者自己组建新的队伍，
+                        | 请在右侧进行操作。
+                li
+                  .collapsible-header
+                    | 比赛时间
+                  .collapsible-body
+                    if(contest === "acm")
+                      p
+                        | ACM校内赛尚未开始。
+                        | 比赛预计将在2018年5月择期举行，请关注比赛动态，不要错过比赛时间
+                    else if(contest === "jiying")
+                      p
+                        | 计算机应用设计大赛分为校内初赛、市级复赛和全国总决赛。
+                        | 初赛尚未开始。
+                        | 初赛预计将在2018年4月择期举行，请关注比赛动态，不要错过比赛时间。
+                li
+                  .collapsible-header
+                    | 比赛地点
+                  .collapsible-body
+                    if(contest === "acm")
+                      p
+                        | ACM校内赛尚未开始。
+                        | 比赛预计将在北京大学计算机机房举行，请关注比赛动态，获悉比赛地点
+                    else if(contest === "jiying")
+                      p
+                        | 计算机应用设计大赛分为校内初赛、市级复赛和全国总决赛。
+                        | 初赛尚未开始。
+                        | 初赛预计将在北京大学校内举行，地点尚未确定，请关注比赛动态，获悉比赛地点。
 
-                  li
-                    .collapsible-header
-                      if(contest === "acm")
-                        | 比赛成绩及奖励
-                      else if(contest === "jiying")
-                        | 作品管理
-                    .collapsible-body
-                      if(contest === "acm")
-                        p
-                          | 比赛成绩将在本网站公布，请及时查询。
-                          | 根据成绩奖励将有所不同，具体细节将在比赛前公布。
-                      else if(contest === "jiying")
-                        p
-                          | 参赛作品在初赛正式开始之前可以修改，比赛以最后一次上传作品作为有效参赛作品。
-                          | 初赛结束后成功晋级到复赛的作品，本网站会在特定时间开放提交入口进行进一步修改。
+                li
+                  .collapsible-header
+                    if(contest === "acm")
+                      | 比赛成绩及奖励
+                    else if(contest === "jiying")
+                      | 作品管理
+                  .collapsible-body
+                    if(contest === "acm")
+                      p
+                        | 比赛成绩将在本网站公布，请及时查询。
+                        | 根据成绩奖励将有所不同，具体细节将在比赛前公布。
+                    else if(contest === "jiying")
+                      p
+                        | 参赛作品在初赛正式开始之前可以修改，比赛以最后一次上传作品作为有效参赛作品。
+                        | 初赛结束后成功晋级到复赛的作品，本网站会在特定时间开放提交入口进行进一步修改。
 
-                  li
-                    .collapsible-header
-                      if(contest === "acm")
-                        | 颁奖仪式
-                      else if(contest === "jiying")
-                        | 比赛成绩及奖励
-                    .collapsible-body
-                      if(contest === "acm")
-                        p
-                          | 颁奖仪式预计在2018年6月于北京大学校内举行，请持续关注信息。
-                      else if(contest === "jiying")
-                        p
-                          | 比赛成绩将在本网站公布，请及时查询。
-                          | 根据成绩奖励将有所不同，具体细节将在比赛前公布。
+                li
+                  .collapsible-header
+                    if(contest === "acm")
+                      | 颁奖仪式
+                    else if(contest === "jiying")
+                      | 比赛成绩及奖励
+                  .collapsible-body
+                    if(contest === "acm")
+                      p
+                        | 颁奖仪式预计在2018年6月于北京大学校内举行，请持续关注信息。
+                    else if(contest === "jiying")
+                      p
+                        | 比赛成绩将在本网站公布，请及时查询。
+                        | 根据成绩奖励将有所不同，具体细节将在比赛前公布。
         if(sign)
           .col.s4
             ul
