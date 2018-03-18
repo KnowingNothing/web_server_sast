@@ -204,9 +204,11 @@ block content
               ul.topic_grid
                 li.list1
                   h3.m_3 在这里上传作品
-                .clear5
                 form(action="/contests/upload/?id=#{id}&contest=#{contest}" method="post" enctype="multipart/form-data")
-                    input.button.btn.waves-effect.waves-light.upload(type="file" name="file")
+                    .btn
+                      span
+                        | File
+                      input.button.btn.waves-effect.waves-light.upload(type="file" name="file")
                     input.button.btn.waves-effect.waves-light.rotate2(type="submit" value="提交")
                 p#fileName
                 script.
