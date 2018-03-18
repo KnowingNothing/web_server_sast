@@ -1,21 +1,21 @@
 extends layout
 
 block content
-  .featured-section
-    .header-top.bg
     .container
       if(contest === "acm")
         h2 注意比赛尚未开始报名，一切操作都不会保存
         script.
-          alert('注意比赛尚未开始报名，一切操作都不会保存')
+          Materialize.toast('注意比赛尚未开始报名，一切操作都不会保存', 5000, 'rounded')
+        //  alert('注意比赛尚未开始报名，一切操作都不会保存')
         h2 ACM校内赛
       else if(contest === "jiying")
         h2 注意比赛尚未开始报名，一切操作都不会保存
         script.
-          alert('注意比赛尚未开始报名，一切操作都不会保存')
+          Materialize.toast('注意比赛尚未开始报名，一切操作都不会保存', 5000, 'rounded')
+        //  alert('注意比赛尚未开始报名，一切操作都不会保存')
         h2 计算机应用设计大赛
-      .featured-main
-        .col-md-4.feature-accord
+      .row
+        .col.s4
           ul.topic_grid
             li.list1
               h3.m_3 赛事状态
