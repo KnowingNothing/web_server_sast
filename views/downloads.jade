@@ -2,11 +2,11 @@ extends layout
 block content
   input#id(type="hidden" value="#{id}")
   // /start-Events
-  .services
-    .container
+  .container
+    .row
       h3 可供下载的内容
       .service-section
-        .portfolio-wrapper-1
+        .card-panel.hoverable
           a.b-link-stripe.b-animate-go.thickbox.play-icon.popup-with-zoom-anim(href='#small-dialog')
             //img.img-responsive.pimg(src='images/s1.jpg', alt='')
             .b-wrapper
@@ -17,7 +17,7 @@ block content
             | 该书是机器学习理论入门参考资料
             | 可供下载与使用
           a.dow-btn(href='/documents/FoundationsofMachineLearning.pdf' target="_blank") 点击下载
-        .portfolio-wrapper-1
+        .card-panel.hoverable
           a.b-link-stripe.b-animate-go.thickbox.play-icon.popup-with-zoom-anim(href='#small-dialog1')
             //img.img-responsive.pimg(src='images/s2.jpg', alt='')
             .b-wrapper
@@ -28,7 +28,7 @@ block content
             | 该文章介绍了AlphaGo 的结构与实现方式。
             | 有希望对 AlphaGo 做一些了解的同学可以下载使用。
           a.dow-btn(href='/documents/Mastering-the-game-of-Go-with-deep-neural-networks-and-tree-search.pdf' target="_blank") 点击下载
-        .portfolio-wrapper-1
+        .card-panel.hoverable
           a.b-link-stripe.b-animate-go.thickbox.play-icon.popup-with-zoom-anim(href='#small-dialog2')
             //img.img-responsive.pimg(src='images/s3.jpg', alt='')
             .b-wrapper
@@ -39,7 +39,7 @@ block content
             | 这本书也是机器学习入门教材。
             | 虽然有些老了，但是作为入门经典学习也是可以的。
           a.dow-btn(href='/documents/机器学习-Mitchell-中文.pdf' target="_blank") 点击下载
-        .portfolio-wrapper-1
+        .card-panel.hoverable
           a.b-link-stripe.b-animate-go.thickbox.play-icon.popup-with-zoom-anim(href='#small-dialog3')
             //img.img-responsive.pimg(src='images/s4.jpg', alt='')
             .b-wrapper
@@ -50,7 +50,7 @@ block content
             | 吴军老师的书，将计算机科学中用到的许多数学知识生动呈现，让你感受数学之美。
           a.dow-btn(href='/documents/数学之美.pdf' target="_blank") 点击下载
       .service-section.two
-        .portfolio-wrapper-1
+        .card-panel.hoverable
           a.b-link-stripe.b-animate-go.thickbox.play-icon.popup-with-zoom-anim(href='#small-dialog')
             //img.img-responsive.pimg(src='images/s1.jpg', alt='')
             .b-wrapper
@@ -61,7 +61,7 @@ block content
             | 该书是以Sutton为主要作者撰写的关于增强学习的入门书籍。
             | 关于增强学习的入门必看书籍。
           a.dow-btn(href='/documents/SuttonBook.pdf' target="_blank") 点击下载
-        .portfolio-wrapper-1
+        .card-panel.hoverable
           a.b-link-stripe.b-animate-go.thickbox.play-icon.popup-with-zoom-anim(href='#small-dialog1')
             //img.img-responsive.pimg(src='images/s2.jpg', alt='')
             .b-wrapper
@@ -72,7 +72,7 @@ block content
             | DQN 是增强学习中的一种方法，依靠网络估计Q值，在一些应用中取得了好的效果。
             | 这篇文章将介绍该方法。
           a.dow-btn(href='/documents/DQNNaturePaper.pdf' target="_blank") 点击下载
-        .portfolio-wrapper-1
+        .card-panel.hoverable
           a.b-link-stripe.b-animate-go.thickbox.play-icon.popup-with-zoom-anim(href='#small-dialog2')
             //img.img-responsive.pimg(src='images/s3.jpg', alt='')
             .b-wrapper
@@ -82,7 +82,7 @@ block content
           p
             | CS294主要讲深度增强学习，课程实例很多，相信对学习有所帮助。
           a.dow-btn(href='/documents/CS294.rar' target="_blank") 点击下载
-        .portfolio-wrapper-1
+        .card-panel.hoverable
           a.b-link-stripe.b-animate-go.thickbox.play-icon.popup-with-zoom-anim(href='#small-dialog3')
             //img.img-responsive.pimg(src='images/s4.jpg', alt='')
             .b-wrapper
@@ -114,15 +114,3 @@ block content
     .image-top
       p(style="width:600px;margin-left:auto;margin-right:auto;")
         | 如果您有资料愿意提供，也可以联系我们，我们将会分享您的智慧。
-
-  .testimonials#testimonials
-    .wmuSlider.example1
-  // //End-foote
-  .copy-right-section
-    .container
-      .col-md-6.copy-right
-        p
-          | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
-          a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
-          | EECSSAST：
-          a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST
