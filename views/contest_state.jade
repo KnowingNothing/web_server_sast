@@ -3,13 +3,15 @@ extends layout
 block content
     .container
       if(contest === "acm")
-        h2 注意比赛尚未开始报名，一切操作都不会保存
+        p.flow-text.bold
+          | 注意比赛尚未开始报名，一切操作都不会保存
         script.
           Materialize.toast('注意比赛尚未开始报名，一切操作都不会保存', 5000, 'rounded')
         //  alert('注意比赛尚未开始报名，一切操作都不会保存')
         h2 ACM校内赛
       else if(contest === "jiying")
-        h2 注意比赛尚未开始报名，一切操作都不会保存
+        p.flow-text.res-text
+          | 注意比赛尚未开始报名，一切操作都不会保存
         script.
           Materialize.toast('注意比赛尚未开始报名，一切操作都不会保存', 5000, 'rounded')
         //  alert('注意比赛尚未开始报名，一切操作都不会保存')
