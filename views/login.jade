@@ -1,56 +1,69 @@
-doctype html
-html
-  head
-    meta(charset='UTF-8')
-    if(!admin)
-      title 登录科协
-    else
-      titla 管理登录
-    link(type='text/css' href="/stylesheets/log-style.css" rel="stylesheet")
+extends layout
 
-  body
-    script(src='/javascripts/jquery-1.8.3.min.js', type='text/javascript')
-    .logo_box
+block content
+  .container
+    if(!admin)
+      h3 科协欢迎您
+    else
+      h3 欢迎您回来，管理员
+    .row
       if(!admin)
-        h3 科协欢迎您
-      else
-        h3 欢迎您回来，管理员
-      if(!admin)
-        form(action='/login', name='f', method='post')
-          .input_outer
-            span.u_user
-            input.text(name='number', onfocus=" if(this.value=='输入学号') this.value=''", onblur="if(this.value=='') this.value='输入学号'", value='输入学号', style='color: #FFFFFF !important', type='text')
-          .input_outer
-            span.u_user
-            select(name="university" value = "-1" style='color: #FFFFFF !important') 学校
-              option(value="1" selected="selected" style='color: #000000 !important') 北京大学
-              option(value="2" style='color: #000000 !important') 清华大学
-              option(value="3" style='color: #000000 !important') 人民大学
-          .input_outer
-            span.us_uer
-            label.l-login.login_password(style='color: rgb(255, 255, 255);display: block;') 输入密码
-            input.text(name='password', style='color: #FFFFFF !important; position:absolute; z-index:100;', onfocus="$('.login_password').hide()", onblur="if(this.value=='') $('.login_password').show()", value='', type='password')
-          .mb2
-            button.act-but.submit(style='color: #FFFFFF') 登录
+        form.col.s12(action='/login', name='f', method='post')
+          .input-field.col.s6
+            input.validate(name='number' id="输入学号" type="text" required placeholder="输入学号" data-error="请输入学号" data-success="right")
+            label(for="学号")
+              | 学号
+          .input-field.col.s6
+            input.validate(name='password' id="password" type="password" required placeholder="输入密码" data-error="请输入密码" data-success="right")
+            label(for="password")
+              | Password
+          .input-field.col.s12
+            select(name="university" value = "-1")
+              option(value="1" selected="selected")
+                | 北京大学
+              option(value="2")
+                | 清华大学
+              option(value="3")
+                | 人民大学
+            label
+              | 学校
+
+          button.btn.waves-effect.waves-light.col.s4(type="submit")
+            | 登录
+            | <i class="material-icons right">send</i>
+
           //input#check-box.checkbox(name='savesid', value='0', type='checkbox')
           //span 记住用户名
+          button.btn.waves-effect.waves-light.col.s2.offset-s4
+            a.white-text(href='/register')
+              | 还没注册账号？
+
+          button.btn.waves-effect.waves-light.col.s2
+            a.white-text(href="/")
+              | 放弃登录
         //a.login-fgetpwd(href='#', style='color: #FFFFFF') 忘记密码？
-        .sas
-          a(href='/register') 还没注册账号？
-        .sas
-          a(href="/") 放弃登录
       else
         // 下面是管理员登录
-        form(action='/admin/login', name='f', method='post')
-          .input_outer
-            span.u_user
-            input.text(name='number', onfocus=" if(this.value=='输入学号') this.value=''", onblur="if(this.value=='') this.value='输入学号'", value='输入学号', style='color: #FFFFFF !important', type='text')
+        form.col.s12(action='/admin/login', name='f', method='post')
+          .input-field.col.s6
+            input.validate(name='number' id="输入学号" type="text" required placeholder="输入学号" data-error="请输入学号" data-success="right")
+            label(for="学号")
+              | 学号
+          .input-field.col.s6
+            input.validate(name='password' id="password" type="password" required placeholder="输入管理员密码" data-error="请输入管理员密码" data-success="right")
+            label(for="password")
+              | Password
           input(type="hidden" value="1" name="university")
-          .input_outer
-            span.us_uer
-            label.l-login.login_password(style='color: rgb(255, 255, 255);display: block;') 输入管理员密码
-            input.text(name='password', style='color: #FFFFFF !important; position:absolute; z-index:100;', onfocus="$('.login_password').hide()", onblur="if(this.value=='') $('.login_password').show()", value='', type='password')
-          .mb2
-            button.act-but.submit(style='color: #FFFFFF') 登录
-        .sas
-          a(href="/") 放弃登录
+
+          button.btn.waves-effect.waves-light.col.s4(type="submit")
+            | 登录
+            | <i class="material-icons right">send</i>
+
+          button.right.btn.waves-effect.waves-light.col.s2.offset-s2
+          a.white-text(href="/")
+            | 放弃登录
+
+  script.
+    $(document).ready(function() {
+      $('select').material_select();
+    });

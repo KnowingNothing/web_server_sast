@@ -1,87 +1,11 @@
 extends layout
 block content
   input#id(type="hidden" value="#{id}")
-  // header
-  .header-section2
-    // log-and-register
-    .header-grey
-      .right#upper
-        ul.login
-          li.login
-            a.login(href="/admin/?action=login") 管理登录
-          li.login
-            a.login(href="/login") 普通登录
-          li.login
-            a.login(href="/register") 注册
-    script.
-      var id = document.getElementById("id");
-      id = id.value;
-      if(id>0)
-      {
-        $('#upper').empty();
-        $('#upper').append(`<ul class='login'>
-          <li class='login'><a class='login' href='#'>欢迎您</a></li>
-          <li class='login'><a class='login' href='/'>退出登录</a></li>
-          </ul>`);
-      }
-    .header-top.bg
-      .container
-        // logo
-        .logo.two
-          //a(href='index.html')
-          img(src='/images/logo.png', alt='')
-        // top-nav
-        .clearfix
-    .sub-header.two
-      .top-nav
-        span.menu.two
-        ul
-          li
-            if(admin)
-              a(href="/admin/?id=#{id}&action=home") Home
-            else
-              a(href="/?id=#{id}") Home
-          li
-            if(admin)
-              a(href="/admin/?id=#{id}&action=about_us") About
-            else
-              a(href="/about_us/?id=#{id}") About
-          li
-            if(admin)
-              a(href="/admin/?id=#{id}&action=contests") Contests
-            else
-              a(href="/contests/?id=#{id}") Contests
-          li.active
-            if(admin)
-              a(href="/admin/?id=#{id}&action=volunteers") Volunteers
-            else
-              a(href="/volunteers/?id=#{id}") Volunteers
-          li
-            if(admin)
-              a(href="/admin/?id=#{id}&action=downloads") Downloads
-            else
-              a(href="/downloads/?id=#{id}") Downloads
-          li
-            if(admin)
-              a(href="/admin/?id=#{id}&action=join_us") Join Us
-            else
-              a(href="/about_us/join_us/?id=#{id}") Join Us
-          .clearfix
-    .clearfix
-    // script-for-menu
-    script.
-      $(document).ready(function(){
-      $("span.menu").click(function(){
-      $(".top-nav ul").slideToggle(200);
-      });
-      });
-    .clearfix
-  // /header
-  .featured-section
-    .container
+  .container
+    .row
       h2 当前志愿活动
       .featured-main
-        .col-md-4.feature-text
+        .col.s4.feature-text
           h3
             | ACM校内赛
           if(admin)
@@ -92,24 +16,12 @@ block content
               | 欢迎参加志愿活动
           .wecome-button
             if(admin)
-              a.button.rotate2(href='/admin/?id=#{id}&activity=acm-school&action=manage_activity')
+              a.button.btn.waves-effect.waves-light(href='/admin/?id=#{id}&activity=acm-school&action=manage_activity')
                 | 点击管理志愿者
                 span
-                img(src='/images/DSC03646.JPG', alt='')
+                img.responsive-img(src='/images/DSC03646.JPG', alt='')
             else
-              a.button.rotate2(href='/volunteers/volunteer/?id=#{id}&activity=acm-school')
+              a.button.btn.waves-effect.waves-light(href='/volunteers/volunteer/?id=#{id}&activity=acm-school')
                 | 相关信息
                 span
-                img(src='/images/DSC03646.JPG', alt='')
-
-  .testimonials#testimonials
-    .wmuSlider.example1
-  // //End-foote
-  .copy-right-section
-    .container
-      .col-md-6.copy-right
-        p
-          | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
-          a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
-          | EECSSAST：
-          a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST
+                img.responsive-img(src='/images/DSC03646.JPG', alt='')

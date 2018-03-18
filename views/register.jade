@@ -1,10 +1,7 @@
-doctype html
-html
-  head
-    meta(charset='UTF-8')
-    title 注册账号
-    link(type='text/css' href="/stylesheets/log-style.css" rel="stylesheet")
-    script(type="application/javascript").
+extends layout
+
+block content
+  script(type="application/javascript").
       function check_empty(val, initial_val)
       {
           val = val.replace(/(^\s*)|(\s*$)/g, '');
@@ -15,7 +12,7 @@ html
       }
       function check_email(email)
       {
-          var split_email = email.split('@');        
+          var split_email = email.split('@');
           if(split_email.length !== 2)
           {
               return false;
@@ -81,54 +78,72 @@ html
           }
           return good_input;
       }
-  body
-    script(src='/javascripts/jquery-1.8.3.min.js', type='text/javascript')
-    .logo_box
+  .container
+    .row
       h2 科协欢迎您
       h3 #{message}
-      form#register(action='/register', name='f', method='post', onsubmit="return check()")
-        .input_outer
-          span.u_user
-          input.text#name(name='name', onfocus=" if(this.value=='姓名') this.value=''", onblur="if(this.value=='') this.value='姓名'", value='姓名', style='color: #FFFFFF !important', type='text')
-        .input_outer
-          span.u_user
-          input.text#number(name='number', onfocus=" if(this.value=='输入学号') this.value=''", onblur="if(this.value=='') this.value='输入学号'", value='输入学号', style='color: #FFFFFF !important', type='text')
-        .input_outer
-          span.u_user
-          select(name="university" value = "-1" style='color: #FFFFFF !important') 学校
-            option(value="1" selected="selected" style='color: #000000 !important') 北京大学
-            option(value="2" style='color: #000000 !important') 清华大学
-            option(value="3" style='color: #000000 !important') 人民大学
-        div(style="margin-left: auto; margin-right: auto; width: 250px; margin-bottom: 8px")
-            span(style="font-size:18px;") 性别:&nbsp;&nbsp;&nbsp;&nbsp;
-            input(name="gender" type="radio" checked value="0")
-            span(style="font-size: 18px;") 男
-            |&nbsp;&nbsp;
-            input.radio(name="gender" type="radio" value="1")
-            span(style="font-size: 18px;") 女
-        .input_outer
-          span.u_user
-          input.text(name='school', onfocus=" if(this.value=='输入学院') this.value=''", onblur="if(this.value=='') this.value='输入学院'", value='输入学院', style='color: #FFFFFF !important', type='text')
-        .input_outer
-          span.u_user
-          input.text#phone_number(name='phone_number', onfocus=" if(this.value=='输入手机号') this.value=''", onblur="if(this.value=='') this.value='输入手机号'", value='输入手机号', style='color: #FFFFFF !important', type='text')
-        .input_outer
-          span.u_user
-          input.text#email(name='email', onfocus=" if(this.value=='输入邮箱') this.value=''", onblur="if(this.value=='') this.value='输入邮箱'", value='输入邮箱', style='color: #FFFFFF !important', type='text')
-        .input_outer
-          span.us_uer
-          label.l-login.login_password(style='color: rgb(255, 255, 255);display: block;') 输入密码
-          input.text#password(name='password', style='color: #FFFFFF !important; position:absolute; z-index:100;', onfocus="$('.login_password').hide()", onblur="if(this.value=='') $('.login_password').show()", value='', type='password')
-        .input_outer
-          span.us_uer
-          label.l-login.login_password(style='color: rgb(255, 255, 255);display: block;') 确认密码
-          input.text#confirm_password(style='color: #FFFFFF !important; position:absolute; z-index:100;', onfocus="$('.login_password').hide()", onblur="if(this.value=='') $('.login_password').show()", value='', type='password')
-        .mb2
-          button.act-but.submit(style='color: #FFFFFF') 注册
+      form.col.s12#register(action='/register', name='f', method='post', onsubmit="return check()")
+        .input-field.col.s4
+          input.validate#name(name='name' type="text" required placeholder="输入姓名" data-error="请输入姓名" data-success="right")
+          label(for="姓名")
+            | 姓名
+        .input-field.col.s2
+            select#gender(name="gender")
+              option(value="0" selected="selected")
+                | 男
+              option(value="1")
+                | 女
+            label
+              | 性别
+        .input-field.col.s6
+            select#university(name="university" value = "-1")
+              option(value="1" selected="selected")
+                | 北京大学
+              option(value="2")
+                | 清华大学
+              option(value="3")
+                | 人民大学
+            label
+              | 学校
+        .input-field.col.s6
+          input.validate#number(name='number' type="text" required placeholder="输入学号" data-error="请输入学号" data-success="right")
+          label(for="学号")
+            | 学号
+        .input-field.col.s6
+          input.validate#school(name='school' type="text" required placeholder="输入学院" data-error="请输入学院" data-success="right")
+          label(for="学院")
+            | 学院
+        .input-field.col.s6
+          input.validate#phone_number(name='phone_number' type="text" required placeholder="输入手机号" data-error="请输入手机号" data-success="right")
+          label(for="手机号")
+            | 手机号
+        .input-field.col.s6
+          input.validate#email(name='email' type="text" required placeholder="输入邮箱" data-error="请输入邮箱" data-success="right")
+          label(for="邮箱")
+            | 邮箱
+        .input-field.col.s6
+          input.validate#password(name='password' type="password" required placeholder="输入密码" data-error="请输入密码" data-success="right")
+          label(for="密码")
+            | 密码
+        .input-field.col.s6
+          input.validate#confirm_password(type="password" required placeholder="输入密码" data-error="请输入密码" data-success="right")
+          label(for="密码")
+            | 确认密码
+
+        button.btn.waves-effect.waves-light.col.s4(type="submit")
+          | 注册
+          | <i class="material-icons right">send</i>
+        button.btn.waves-effect.waves-light.col.s3.offset-s3
+          a.white-text(href="/login")
+            | 已有账号，这里登录
+        button.btn.waves-effect.waves-light.col.s2
+          a.white-text(href="/")
+            | 放弃注册
         //input#check-box.checkbox(name='savesid', value='0', type='checkbox')
         //span 记住用户名
       //a.login-fgetpwd(href='#', style='color: #FFFFFF') 忘记密码？
-      .sas
-        a(href='/login') 已有账号，这里登录
-      .sas
-        a(href="/") 放弃注册
+
+  script.
+    $(document).ready(function() {
+      $('select').material_select();
+    });

@@ -1,91 +1,19 @@
 extends layout
-
 block content
     input#id(type="hidden" value="#{id}")
     // header
     .header-section2
       // log-and-register
-      .header-grey
-        .right#upper
-          ul.login
-            li.login
-              a.login(href="/admin/?action=login") 管理登录
-            li.login
-              a.login(href="/login") 普通登录
-            li.login
-              a.login(href="/register") 注册
-      script.
-        var id = document.getElementById("id");
-        id = id.value;
-        if(id>0)
-        {
-          $('#upper').empty();
-          $('#upper').append(`<ul class='login'>
-            <li class='login'><a class='login' href='#'>欢迎您</a></li>
-            <li class='login'><a class='login' href='/'>退出登录</a></li>
-            </ul>`);
-        }
-      .header-top.bg
-        .container
-          // logo
-          .logo.two
-            //a(href='index.html')
-            img(src='/images/logo.png', alt='')
-          // top-nav
-          .clearfix  
-      .sub-header.two
-        .top-nav
-          span.menu.two  
-          ul
-            li
-              if(admin)
-                a(href="/admin/?id=#{id}&action=home") Home
-              else
-                a(href="/?id=#{id}") Home
-            li.active
-              if(admin)
-                a(href="/admin/?id=#{id}&action=about_us") About
-              else
-                a(href="/about_us/?id=#{id}") About
-            li
-              if(admin)
-                a(href="/admin/?id=#{id}&action=contests") Contests
-              else
-                a(href="/contests/?id=#{id}") Contests
-            li
-              if(admin)
-                a(href="/admin/?id=#{id}&action=volunteers") Volunteers
-              else 
-                a(href="/volunteers/?id=#{id}") Volunteers
-            li
-              if(admin)
-                a(href="/admin/?id=#{id}&action=downloads") Downloads
-              else
-                a(href="/downloads/?id=#{id}") Downloads
-            li
-              if(admin)
-                a(href="/admin/?id=#{id}&action=join_us") Join Us
-              else
-                a(href="/about_us/join_us/?id=#{id}") Join Us
-            .clearfix  
-      .clearfix  
       // script-for-menu
-      script.
-        $(document).ready(function(){
-        $("span.menu").click(function(){
-        $(".top-nav ul").slideToggle(200);
-        });
-        });
-      .clearfix  
     // /header
-    .about-main
-      .container
+    .container
+      .card-panel.hoverable
         h3 关于科协
         .main-about
           .main-img
-            img(src='/images/科协合影.JPG' title='科协合影')
+            img.responsive-img(src='/images/科协合影.JPG' title='科协合影')
           .main-text
-            h4
+            h4.blue-text
               | 学生科学技术协会
             p.para1
               | 学生科学技术协会简称科协，是信息科学技术学院团委下属部门，主要工作为负责学术竞赛的举办。
@@ -103,200 +31,137 @@ block content
     .ourteam
       .container
         h3 我们的团队
-        .team
-          ul#flexiselDemo3
-            li
-              .team1
-                img.img-responsive(src='/images/yuhailong.jpeg', alt='')
-                h4 于海龙 活动组组长
-                p
-                  | 16级信科计算机系本科生，来自山东潍坊。在科协一年多的时间里收获了许多，成长了许多，在这里，每个人都能找到TA自己的shining point。
-            li
-              .team1
-                img.img-responsive(src='/images/xiangdongwei.jpg', alt='')
-                h4 向东伟 宣传组组长
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/mayiping.jpg', alt='')
-                h4 马义平 外联组组长
-                p
-                  | 信科16级计算机系本科生，在科协的大家庭里已经度过一年多的时间啦~ 从入学开始的新手小白，到现在的轻车熟路，科协教会了我很多。作为一个爱旅游爱运动爱码字的同学，一年时间里写了不少的推送，做了不少次志愿者，收获了不少的快乐。欢迎大家加入科协的大家庭~ 
-            li
-              .team1
-                img.img-responsive(src='/images/zhengsize.jpg', alt='')
-                h4 郑思泽 主席
-                p
-                  | 15级信科智能系本科生，来自黑龙江省。科协虽然不大，但这里你却可以大有作为。在这里，获得能力，获得技术，获得经验，获得难忘的回忆。
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 梁政 副主席
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 李浩辰 副主席
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 姜博睿 副主席
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 罗睿轩 副主席
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 吕晓钟 外联组成员
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 娄明 外联组成员
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 黄怿静 活动组成员
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 万忠祺 宣传组成员
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 龚卓成 活动组成员
-                p
-                  | TA还没有自我介绍哟            
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 王诚科 活动组成员
-                p
-                  | 17级信科本科生，来自广东。印象最深的是ACM区域赛的举办。从场地布置到正式比赛，科协成员发挥的作用不可或缺。当志愿者的那几天，有趣而充实。
-            li
-              .team1
-                img.img-responsive(src='/images/chenrenze.jpg', alt='')
-                h4 陈仁泽 活动组成员
-                p
-                  | 信科17级本科生，是一个初入CS的萌新，来到科协也是为了能拓宽视野，接触更多竞赛大佬、业界大牛。希望科协能越来越好~~~
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 王泽钧 宣传组成员
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 栗楠 宣传组成员
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 王嘉睿 活动组成员
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 徐德嘉 外联组成员
-                p
-                  | 信科17级本科生
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 赵霖萱 宣传组成员
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 朱钰 活动组成员
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 常可 活动组成员
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 油梦圆 优秀选手
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 黄东仪 优秀选手
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 陈颖婕 往届会员
-                p
-                  | TA还没有自我介绍哟
-            li
-              .team1
-                img.img-responsive(src='/images/avatar.png', alt='')
-                h4 孙之清 往届会员
-                p
-                  | TA还没有自我介绍哟            
-        script(type='text/javascript').
-          $(window).load(function() {
-          $("#flexiselDemo3").flexisel({
-          visibleItems: 4,
-          animationSpeed: 1000,
-          autoPlay: true,
-          autoPlaySpeed: 3000,
-          pauseOnHover: true,
-          enableResponsiveBreakpoints: true,
-          responsiveBreakpoints: {
-          portrait: {
-          changePoint:480,
-          visibleItems: 1
-          },
-          landscape: {
-          changePoint:640,
-          visibleItems: 2
-          },
-          tablet: {
-          changePoint:768,
-          visibleItems: 4
-          }
-          }
-          });
-          });
-        script(type='text/javascript', src='/javascripts/jquery.flexisel.js')
-    // ourteam
-    // /start-text-slider
-    .testimonials#testimonials
-      .wmuSlider.example1
-    // //End-foote
-    .copy-right-section
-      .container
-        .col-md-6.copy-right
-          p
-            | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
-            a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
-            | EECSSAST： 
-            a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST 
+          .row
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/yuhailong.jpeg', alt='')
+              h4.blue-text 于海龙 活动组组长
+              h5.blue-text
+                | 16级信科计算机系本科生，来自山东潍坊。在科协一年多的时间里收获了许多，成长了许多，在这里，每个人都能找到TA自己的shining point。
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/mayiping.jpg', alt='')
+              h4.blue-text 马义平 外联组组长
+              h5.blue-text
+                | 信科16级计算机系本科生，在科协的大家庭里已经度过一年多的时间啦~ 从入学开始的新手小白，到现在的轻车熟路，科协教会了我很多。作为一个爱旅游爱运动爱码字的同学，一年时间里写了不少的推送，做了不少次志愿者，收获了不少的快乐。欢迎大家加入科协的大家庭~
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/zhengsize.jpg', alt='')
+              h4.blue-text 郑思泽 主席
+              h5.blue-text
+                | 15级信科智能系本科生，来自黑龙江省。科协虽然不大，但这里你却可以大有作为。在这里，获得能力，获得技术，获得经验，获得难忘的回忆。
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/chenrenze.jpg', alt='')
+              h4.blue-text 陈仁泽 活动组成员
+              h5.blue-text
+                | 信科17级本科生，是一个初入CS的萌新，来到科协也是为了能拓宽视野，接触更多竞赛大佬、业界大牛。希望科协能越来越好~~~
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 向东伟 宣传组组长
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 梁政 副主席
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 李浩辰 副主席
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 姜博睿 副主席
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 罗睿轩 副主席
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 吕晓钟 外联组成员
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 娄明 外联组成员
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 黄怿静 活动组成员
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 万忠祺 宣传组成员
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 龚卓成 活动组成员
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 王诚科 活动组成员
+              h5.blue-text
+                | 17级信科本科生，来自广东。印象最深的是ACM区域赛的举办。从场地布置到正式比赛，科协成员发挥的作用不可或缺。当志愿者的那几天，有趣而充实。
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 王泽钧 宣传组成员
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 栗楠 宣传组成员
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 王嘉睿 活动组成员
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 徐德嘉 外联组成员
+              h5.blue-text
+                | 信科17级本科生
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 赵霖萱 宣传组成员
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 朱钰 活动组成员
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 常可 活动组成员
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 油梦圆 优秀选手
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 黄东仪 优秀选手
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 陈颖婕 往届会员
+              h5.blue-text
+                | TA还没有自我介绍哟
+            li.card-panel.hoverable.col.s4
+              img.responsive-img(src='/images/avatar.png', alt='')
+              h4.blue-text 孙之清 往届会员
+              h5.blue-text
+                | TA还没有自我介绍哟
+
+    script.
+      $(document).ready(function () { $('.slider').slider({full_width: true, height:1000}); });
