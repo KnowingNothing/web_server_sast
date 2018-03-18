@@ -206,10 +206,11 @@ block content
                   h3.m_3 在这里上传作品
                 .clear5
                 form.file-field.input-field(action="/contests/upload/?id=#{id}&contest=#{contest}" method="post" enctype="multipart/form-data")
-                    input.button.btn.waves-effect.waves-light.upload(type="file" name="file")
-                  .file-path-wrapper
-                    input.button.file-path validate.btn.waves-effect.waves-light.upload(type="text" name="file_path")
+                  input.button.btn.waves-effect.waves-light.upload(type="file" name="file")
+//                  .file-path-wrapper
+//                    input.button.file-path validate.btn.waves-effect.waves-light.upload(type="text" name="file_path")
                     input.button.btn.waves-effect.waves-light.rotate2(type="submit" value="提交")
+
                 p#fileName
                 script.
                   $("#file").on("change", function () {
