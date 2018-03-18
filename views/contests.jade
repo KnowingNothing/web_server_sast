@@ -1,87 +1,11 @@
 extends layout
 block content
   input#id(type="hidden" value="#{id}")
-  // header
-  .header-section2
-    // log-and-register
-    .header-grey
-      .right#upper
-        ul.login
-          li.login
-            a.login(href="/admin/?action=login") 管理登录
-          li.login
-            a.login(href="/login") 普通登录
-          li.login
-            a.login(href="/register") 注册
-    script.
-      var id = document.getElementById("id");
-      id = id.value;
-      if(id>0)
-      {
-        $('#upper').empty();
-        $('#upper').append(`<ul class='login'>
-          <li class='login'><a class='login' href='#'>欢迎您</a></li>
-          <li class='login'><a class='login' href='/'>退出登录</a></li>
-          </ul>`);
-      }
-    .header-top.bg
-      .container
-        // logo
-        .logo.two
-          //a(href='index.html')
-          img(src='/images/logo.png', alt='')
-        // top-nav
-        .clearfix  
-    .sub-header.two
-      .top-nav
-        span.menu.two  
-        ul
-          li
-            if(admin)
-              a(href="/admin/?id=#{id}&action=home") Home
-            else
-              a(href="/?id=#{id}") Home
-          li
-            if(admin)
-              a(href="/admin/?id=#{id}&action=about_us") About
-            else
-              a(href="/about_us/?id=#{id}") About
-          li.active
-            if(admin)
-              a(href="/admin/?id=#{id}&action=contests") Contests
-            else
-              a(href="/contests/?id=#{id}") Contests
-          li
-            if(admin)
-              a(href="/admin/?id=#{id}&action=volunteers") Volunteers
-            else 
-              a(href="/volunteers/?id=#{id}") Volunteers
-          li
-            if(admin)
-              a(href="/admin/?id=#{id}&action=downloads") Downloads
-            else
-              a(href="/downloads/?id=#{id}") Downloads
-          li
-            if(admin)
-              a(href="/admin/?id=#{id}&action=join_us") Join Us
-            else
-              a(href="/about_us/join_us/?id=#{id}") Join Us
-          .clearfix  
-    .clearfix  
-    // script-for-menu
-    script.
-      $(document).ready(function(){
-      $("span.menu").click(function(){
-      $(".top-nav ul").slideToggle(200);
-      });
-      });
-    .clearfix  
-  // /header
   .featured-section
     .container
       h2 当前比赛
-      .featured-main
-        .col-md-4.feature-text
+      .row
+        .col.s6.card-panel.hoverable
           h3
             | ACM校内赛
           if(admin)
@@ -93,18 +17,17 @@ block content
               | 比赛目的为提高计算机教学质量与选拔优秀选手。
               | 比赛形式借鉴ACM正规比赛，三人组成一队使用一台电脑在规定时间内正确解答尽可能多的题目。
               | ACM竞赛年度性竞赛，始于1970年，是全球大学生计算机程序能力竞赛活动中最有影响的一项赛事，是全球历史最悠久、规模最大且最负盛名的程序设计竞赛。竞赛提倡创新和团队协作，鼓励学生在构建全新的软件程序时尽情发挥创意，帮助学生检验自己在强压力下的工作能力。是世界各地计算机程序设计者大显身手的舞台，也是世界一流大学展现教育成果的最佳窗口。
-          .wecome-button
           if(admin)
-            a.button.rotate2(href='/admin/?id=#{id}&action=manage_contest&contest=acm')
+            button.btn.waves-effect.waves-light.col.s2(href='/admin/?id=#{id}&action=manage_contest&contest=acm')
               | 点击进入管理面板
-              span 
-              img(src='/images/jiangbei.JPG' alt='ACM奖杯')
+              span
+              img.responsive-img(src='/images/jiangbei.JPG' alt='ACM奖杯')
           else
-            a.button.rotate2(href='/contests/contest/?id=#{id}&contest=acm')
+            button.btn.waves-effect.waves-light.col.s2(href='/contests/contest/?id=#{id}&contest=acm')
               | 相关信息
-              span  
-              img(src='/images/jiangbei.JPG', alt='ACM奖杯')
-        .col-md-4.feature-text
+              span
+              img.responsive-img(src='/images/jiangbei.JPG', alt='ACM奖杯')
+        .col.s6.card-panel.hoverable
           h3
             | 计算机应用设计大赛
           if(admin)
@@ -116,25 +39,13 @@ block content
               | “中国大学生计算机设计大赛”是由教育部高等学校计算机类专业教学指导委员会、教育部高等学校软件工程专业教学指导委员会、教育部高等学校大学计算机课程教学指导委员会、教育部高等学校文科计算机基础教学指导分委员会、中国教育电视台联合主办的大型全国竞赛。
               | 计算机应用设计大赛便是该全国赛的校内选拔赛。校内赛选拔的优秀选手将有机会参与到复赛，成功晋级后可以参加全国赛。
               | 该比赛已经举办多年，每年都有优秀的选手在全国总决赛获得较好名次。
-          .wecome-button
           if(admin)
-            a.button.rotate2(href='/admin/?id=#{id}&action=manage_contest&contest=jiying')
+            button.btn.waves-effect.waves-light.col.s2(href='/admin/?id=#{id}&action=manage_contest&contest=jiying')
               | 点击进入管理面板
               span
-              img(src='/images/IMG_20171111_194115.jpg', alt='')
+              img.responsive-img(src='/images/IMG_20171111_194115.jpg', alt='')
           else
-            a.button.rotate2(href='/contests/contest/?id=#{id}&contest=jiying')
+            button.btn.waves-effect.waves-light.col.s2(href='/contests/contest/?id=#{id}&contest=jiying')
               | 相关信息
-              span  
-              img(src='/images/IMG_20171111_194115.jpg', alt='')
-  .testimonials#testimonials
-    .wmuSlider.example1
-  // //End-foote
-  .copy-right-section
-    .container
-      .col-md-6.copy-right
-        p
-          | 信息科学技术学院学生科学技术协会 @2018.eecssast ：
-          a(href='http://www.eecssast.com/', target='_blank', title='信科科协') 信科科协
-          | EECSSAST： 
-          a(href='http://www.eecssast.com/', title='EECSSAST', target='_blank') EECSSAST
+              span
+              img.responsive-img(src='/images/IMG_20171111_194115.jpg', alt='')
