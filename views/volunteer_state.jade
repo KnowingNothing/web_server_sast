@@ -63,40 +63,40 @@ block content
                     | 工作尚未安排。报酬未知。
 
           if(sign)
-            .col.s4.feature-accord
+            .col.s4
               ul.topic_grid
                 li.list1
                   h3.m_3 您的志愿小组报名情况
                   h3.m_3 您的id是#{id}
                   .clear5
               if(group % 2 >= 1)
-                a.button.rotate2(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=0')
+                a.btn.waves-effect.waves-light(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=0')
                   | 已加入第一组，点击放弃报名
                   span
                   img(src="/images/avatar.png", alt="第一组二维码")
                   label 扫描第一组二维码
               else
-                a.button.rotate2(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=0')
+                a.btn.waves-effect.waves-light(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=0')
                   | 点击加入第一组
                   span
               if(group / 2 % 2 >= 1)
-                a.button.rotate2(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=1')
+                a.btn.waves-effect.waves-light(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=1')
                   | 已加入第二组，点击放弃报名
                   span
                   img(src="/images/avatar.png", alt="第二组二维码")
                   label 扫描第二组二维码
               else
-                a.button.rotate2(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=1')
+                a.btn.waves-effect.waves-light(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=1')
                   | 点击加入第二组
                   span
               if(group / 4 % 2 >= 1)
-                a.button.rotate2(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=2')
+                a.btn.waves-effect.waves-light(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=2')
                   | 已加入第三组，点击放弃报名
                   span
                   img(src="/images/avatar.png", alt="第三组二维码")
                   label 扫描第三组二维码
               else
-                a.button.rotate2(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=2')
+                a.btn.waves-effect.waves-light(href='/volunteers/volunteer/sign_group/?id=#{id}&activity=#{activity}&group=2')
                   | 点击加入第三组
                   span
             .col.s4.feature-accord
@@ -161,17 +161,17 @@ block content
                               | 并没有您的活动记录。
                           .clearfix
               .wecome-button
-                a.button.rotate2(href='/volunteers/?id=#{id}')
+                a.btn.waves-effect.waves-light(href='/volunteers/?id=#{id}')
                   | 返回
                   span
           else
             .col.s4.feature-accord
               .wecome-button
-              a.button.rotate2(href='/volunteers/volunteer/sign/?id=#{id}&activity=#{activity}')
+              a.btn.waves-effect.waves-light(href='/volunteers/volunteer/sign/?id=#{id}&activity=#{activity}')
                 | 点击参加志愿活动
                 span
             .col.s4.feature-accord
               .wecome-button
-                a.button.rotate2(href='/volunteers/?id=#{id}')
+                a.btn.waves-effect.waves-light(href='/volunteers/?id=#{id}')
                   | 返回
                   span
