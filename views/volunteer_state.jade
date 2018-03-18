@@ -13,9 +13,8 @@ block content
         .row
           .col.s4
             ul.card-panel.hoverable
-              li.list1
-                h3.m_3 志愿活动状态
-                .clear5
+              li
+                h4 志愿活动状态
             ul.collapsible.popout(data-collapsible="accordion")
               li
                 .collapsible-header.active
@@ -64,11 +63,10 @@ block content
 
           if(sign)
             .col.s4
-              ul.topic_grid
-                li.list1
-                  h3.m_3 您的志愿小组报名情况
-                  h3.m_3 您的id是#{id}
-                  .clear5
+              ul.card-panel.hoverable
+                li
+                  h4 您的志愿小组报名情况
+                  h4 您的id是#{id}
               if(group % 2 >= 1)
                 a.btn.waves-effect.waves-light(href='/volunteers/volunteer/resign_group/?id=#{id}&activity=#{activity}&group=0')
                   | 已加入第一组，点击放弃报名
@@ -100,10 +98,9 @@ block content
                   | 点击加入第三组
                   span
             .col.s4.feature-accord
-              ul.topic_grid
-                li.list1
-                  h3.m_3 您的活动情况
-                  .clear5
+              ul.card-panel.hoverable
+                li
+                  h4 您的活动情况
               .menu_vertical
                 section.accordation_menu
                   if(group % 2 >= 1)
