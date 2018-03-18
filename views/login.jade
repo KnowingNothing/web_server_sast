@@ -45,19 +45,19 @@ block content
       else
         // 下面是管理员登录
         form.col.s12(action='/admin/login', name='f', method='post')
-        .input-field.col.s6
-          input.validate(name='number' id="输入学号" type="text" required placeholder="输入学号" data-error="请输入学号" data-success="right")
-          label(for="学号")
-            | 学号
-        .input-field.col.s6
-          input.validate(name='password' id="password" type="password" required placeholder="输入管理员密码" data-error="请输入管理员密码" data-success="right")
-          label(for="password")
-            | Password
-        input(type="hidden" value="1" name="university")
+          .input-field.col.s6
+            input.validate(name='number' id="输入学号" type="text" required placeholder="输入学号" data-error="请输入学号" data-success="right")
+            label(for="学号")
+              | 学号
+          .input-field.col.s6
+            input.validate(name='password' id="password" type="password" required placeholder="输入管理员密码" data-error="请输入管理员密码" data-success="right")
+            label(for="password")
+              | Password
+          input(type="hidden" value="1" name="university")
 
-        button.btn.waves-effect.waves-light.col.s4(type="submit")
-          | 登录
-          | <i class="material-icons right">send</i>
+          button.btn.waves-effect.waves-light.col.s4(type="submit")
+            | 登录
+            | <i class="material-icons right">send</i>
 
         button.btn.waves-effect.waves-light.col.s2.offset-s6
           a.white-text(href="/")
