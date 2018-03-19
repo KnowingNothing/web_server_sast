@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "test": "./node_modules/nodemon/bin/nodemon.js ./bin/www",
-    "start": "nohup bin/www &"
+    "start": "nohup node bin/www &"
   },
   "dependencies": {
     "archiver": "^2.1.1",
