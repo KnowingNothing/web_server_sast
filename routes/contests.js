@@ -112,14 +112,15 @@ router.get('/contest', function(req, res){
 router.get('/sign', function(req, res){
     let id = req.query.id;
     let contest = req.query.contest;
-    check.sign_contest(id, contest, function(done){
+    let type = req.query.type;
+    check.sign_contest(id, contest, type, function(done){
         if(!done)
         {
-            res.render('error', {error: {}, message: "报名失败", action: `/contests/contest/?id=${id}&contest=${contest}`});
+            res.render('error', {error: {}, message: "报名失败", action: `/contests/contest/?id=${id}&contest=${contest}&type=${type}`});
         }
         else
         {
-            res.render('error', {error: {}, message: "报名成功", action: `/contests/contest/?id=${id}&contest=${contest}`});
+            res.render('error', {error: {}, message: "报名成功", action: `/contests/contest/?id=${id}&contest=${contest}&type=${type}`});
         }
     });
 });

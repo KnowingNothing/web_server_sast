@@ -175,7 +175,7 @@ let already_sign_contest = function(id, contest, callback)
     });
 }
 
-let sign_contest = function(id, contest, callback)
+let sign_contest = function(id, contest, type, callback)
 {
     pool_admin.getConnection(function(err, conn){
         if(err){console.log(err);callback(false);}
@@ -231,7 +231,7 @@ let sign_contest = function(id, contest, callback)
             }
             let task4 = function(cb)
             {
-                let sql = `insert into user_contest(id, contest, team) values(${id},${contest_id}, ${team_id});`;
+                let sql = `insert into user_contest(id, contest, team, type) values(${id},${contest_id}, ${team_id}, ${type});`;
                 conn.query(sql, function(err){
                     if(err)
                     {
