@@ -62,8 +62,7 @@ block content
                   input(type="hidden" name="id" value="#{id}")
                   input(type="hidden" name="contest" value="#{detail}")
                   input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")
-                  label
-                    input.btn.waves-effect.waves-light(type="submit" name="action" value="download_work_id")
+                  button.btn.waves-effect.waves-light(type="submit" name="action" value="download_work_id")
                     | 下载某个队伍作品
                   .input-field
                     select(name="val" value = "-1")
@@ -73,8 +72,7 @@ block content
                         | 推荐
                       option(value="2")
                         | 非常推荐
-                  label
-                    input.btn.waves-effect.waves-light(type="submit" name="action" value="add_score")
+                  button.btn.waves-effect.waves-light(type="submit" name="action" value="add_score")
                     | 给队伍评分"
 
             .wecome-button
