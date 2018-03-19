@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "./node_modules/nodemon/bin/nodemon.js ./bin/www"
+    "start": "./node_modules/nodemon/bin/nodemon.js ./bin/www",
+    "run": "nohup bin/www &"
   },
   "dependencies": {
     "archiver": "^2.1.1",
