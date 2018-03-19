@@ -677,7 +677,7 @@ let add_team = function(id, contest, new_team, callback)
 }
 
 let add_score = function(id, contest, judge, val, callback) {
-    let sql = `insert into score(id, contest, judge, val) values(${id},${contest}, ${judge}, ${val});`;
+    let sql = `insert into score(id, contest, judge, val) values(${id},'${contest}', ${judge}, ${val});`;
     pool_admin.getConnection(function(err, conn){
         if(err)
         {
