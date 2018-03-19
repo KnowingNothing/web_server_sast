@@ -21,32 +21,32 @@ html(lang='en')
         a.button-collapse(href='#', data-activates='nav-mobile')
           i.material-icons menu
         ul.right.hide-on-med-and-down
-          li.tab.active.waves-effect.waves-light
+          li#HOME.tab.waves-effect.waves-light
             if(admin)
               a(href="/admin/?id=#{id}&action=home") Home
             else
               a(href="/?id=#{id}") Home
-          li.tab.waves-effect.waves-light
+          li#ABOUT.tab.waves-effect.waves-light
             if(admin)
               a(href="/admin/?id=#{id}&action=about_us") About Us
             else
               a(href="/about_us/?id=#{id}") About Us
-          li.tab.waves-effect.waves-light
+          li#CONTESTS.tab.waves-effect.waves-light
             if(admin)
               a(href="/admin/?id=#{id}&action=contests") Contests
             else
               a(href="/contests/?id=#{id}") Contests
-          li.tab.waves-effect.waves-light
+          li#VOLUNTEERS.tab.waves-effect.waves-light
             if(admin)
               a(href="/admin/?id=#{id}&action=volunteers") Volunteers
             else
               a(href="/volunteers/?id=#{id}") Volunteers
-          li.tab.waves-effect.waves-light
+          li#DOWNLOADS.tab.waves-effect.waves-light
             if(admin)
               a(href="/admin/?id=#{id}&action=downloads") Downloads
             else
               a(href="/downloads/?id=#{id}") Downloads
-          li.tab.waves-effect.waves-light
+          li#JOIN.tab.waves-effect.waves-light
             if(admin)
               a(href="/admin/?id=#{id}&action=join_us") Join Us
             else
@@ -64,9 +64,9 @@ html(lang='en')
       } else {
         $('.right_nav').empty();
         $('.right_nav').append(`<ul class='login'>
-          <li class='login'><a class='login' href='/admin/?action=login'>管理登录</a></li>
-          <li class='login'><a class='login' href='/login'>普通登录</a></li>
-          <li class='login'><a class='login' href='/register'>注册</a></li>
+          <li id='adminlogin' class='login'><a class='login' href='/admin/?action=login'>管理登录</a></li>
+          <li id='login' class='login'><a class='login' href='/login'>登录</a></li>
+          <li id='register' class='login'><a class='login' href='/register'>注册</a></li>
           </ul>`);
       }
     block content

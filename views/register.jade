@@ -2,6 +2,7 @@ extends layout
 
 block content
   script(type="application/javascript").
+      $('#register').addClass('active');
       function check_empty(val, initial_val)
       {
           val = val.replace(/(^\s*)|(\s*$)/g, '');
@@ -100,9 +101,7 @@ block content
               option(value="1" selected="selected")
                 | 北京大学
               option(value="2")
-                | 清华大学
-              option(value="3")
-                | 人民大学
+                | 校外
             label
               | 学校
         .input-field.col.s6

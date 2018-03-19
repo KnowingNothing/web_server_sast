@@ -8,6 +8,8 @@ block content
       h3 欢迎您回来，管理员
     .row
       if(!admin)
+        script.
+          $('#login').addClass('active')
         form.col.s12(action='/login', name='f', method='post')
           .input-field.col.s6
             input.validate(name='number' id="输入学号" type="text" required placeholder="输入学号" data-error="请输入学号" data-success="right")
@@ -22,9 +24,7 @@ block content
               option(value="1" selected="selected")
                 | 北京大学
               option(value="2")
-                | 清华大学
-              option(value="3")
-                | 人民大学
+                | 校外
             label
               | 学校
 
@@ -43,6 +43,8 @@ block content
               | 放弃登录
         //a.login-fgetpwd(href='#', style='color: #FFFFFF') 忘记密码？
       else
+        script.
+          $('#adminlogin').addClass('active')
         // 下面是管理员登录
         form.col.s12(action='/admin/login', name='f', method='post')
           .input-field.col.s6
