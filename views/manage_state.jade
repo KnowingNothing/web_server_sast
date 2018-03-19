@@ -66,13 +66,14 @@ block content
                   input(type="hidden" name="action" value="download_works")
             form(action="/admin", method="get")
                   .input-field
-                    select(name="university" value = "-1")
+                    select(name="val" value = "-1")
                       option(value="0" selected="selected")
                         | 不推荐
                       option(value="1")
                         | 推荐
                       option(value="2")
                         | 非常推荐
+                  input.text.team(name="team_id" value="队伍的id" onfocus="if(this.value==='队伍的id') this.value=''" onblur="if(this.value==='') this.value='队伍的id'")
                   input.btn.waves-effect.waves-light(type="submit" value="给队伍评分")
                   input(type="hidden" name="id" value="#{id}")
                   input(type="hidden" name="contest" value="#{detail}")
