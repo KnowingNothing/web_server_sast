@@ -189,15 +189,14 @@ router.get('/', function(req, res){
                       let val = req.query.val;
                       let contest = req.query.contest;
                       check.add_score(team_id, contest, judge, val, function (done) {
-                        res.render('error', {error: {}, message: `为${team_id}队伍评分成功，是${val}分`});
                         if(!done)
                         {
-                            res.render('error', {error: {}, message: "为队伍"+team_id+"评分失败，请重试", action:`/admin/?id=${id}&contest=${contest}&action=add_score&val=${val}&id=${judge}`});
+                            res.render('error', {error: {}, message: "为队伍"+team_id+"评分失败，请重试", action:`/admin/?id=${id}&contest=${contest}&action=manage_contest`});
                         }
                         else
                         {
                           console.log('score of ' + team_id + ' is ' + val + ' from judge_id ' + judge + ' in contest_id ' + contest);
-                          res.render('error', {error: {}, message: `为${team_id}队伍评分成功，是${val}分`});
+                          res.render('error', {error: {}, message: `为${team_id}队伍评分成功，是${val}分`, action:`/admin/?id=${id}&contest=${contest}&action=manage_contest`});
                           // Materialize.toast('给队伍${team_id}打分成功 , 打了${val}分', 5000, 'rounded')
                         }
                       });
