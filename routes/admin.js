@@ -183,6 +183,23 @@ router.get('/', function(req, res){
                       archive.directory(store_path, false);
                       archive.finalize();
                     }
+                    else if (action === "add_score") {
+                      // currently only support only one contest
+                      let team_id = req.query.team_id;
+                      let judge = req.query.id;
+                      let val = req.query.val;
+                      let contest = req.query.contest;
+                      check.add_score(team_id, contest, judge, val, function (done) {
+                        if(!done)
+                        {
+                            res.render('error', {error: {}, message: "为队伍"+team_id+"评分失败，请重试", action:`/admin/?id=${id}&contest=${contest}&action=add_score&val=${val}&id=${judge}`});
+                        }
+                        else
+                        {
+                          console.log('score of ' + team_id + ' is ' + val + ' from judge_id ' + judge + ' in contest_id ' + contest);
+                        }
+                      });
+                    }
                 }
             });
         }
@@ -256,7 +273,7 @@ router.post('/login', function(req, res){
 									}
 									});
 								}
-							});        
+							});
 						}
 					}
 				});

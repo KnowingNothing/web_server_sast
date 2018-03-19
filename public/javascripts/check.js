@@ -676,6 +676,31 @@ let add_team = function(id, contest, new_team, callback)
     });
 }
 
+let add_score = function(id, contest, judge, val, callback) {
+    let sql = `insert into score(id, contest, judge, val) values(${id},${contest}, ${judge}, ${val});`;
+    pool_admin.getConnection(function(err, conn){
+        if(err)
+        {
+            console.log(err);
+            callback(false);
+        }
+        else
+        {
+            conn.query(sql, function(err){
+                if(err)
+                {
+                    console.log(err);
+                    callback(false);
+                }
+                else
+                {
+                    callback(true);
+                }
+            });
+            conn.release();
+        }
+    });
+}
 let get_university = function(id, callback)
 {
     pool_admin.getConnection(function(err, conn){
@@ -1206,6 +1231,7 @@ module.exports = {
     sign_contest: sign_contest,
     sign_activity: sign_activity,
     add_team: add_team,
+    add_score: add_score,
     add_member: add_member,
     get_id: get_id,
     get_university: get_university,
