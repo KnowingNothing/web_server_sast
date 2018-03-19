@@ -144,55 +144,58 @@ router.post('/login', function(req, res){
             {
                 res.render('error', {error: {}, message: "该账号对应多个用户,后台数据库错误", action: "/"});
             }
-            let sql = `select password from admin_pass where id = 1;`;
-            conn.query(sql, function(err, rows1){
-                if(err || rows1 === undefined || rows1.length < 1)
-                {
-                    console.log(err);
-                    res.render('error', {error: err, message: "登录失败", action: "/"});
-                }
-                else
-                {
-                    if(password !== rows1[0].password)
-                    {
-                        res.render('error', {error:{}, message: "密码错误", action: "/"});
-                    }
-                    else
-                    {
-                        let now = new Date();
-                        let timestamp = now.getTime();
-                        let ip_info = req.headers.remoteip || req.socket.remoteAddress;
-                        check.check_already_login(rows[0].id, ip_info, timestamp, true, function(already, valid){
-                            if(already === false)
-                            {
-                                check.add_login(rows[0].id, ip_info, timestamp, true, function(done){
-                                if(!done)
-                                {
-                                    res.render('error', {error:{}, message: "管理员登录失败", action: "/"});
-                                }
-                                else
-                                {
-                                    res.redirect(`/admin/?action=home&id=${rows[0].id}`);
-                                }
-                                });
-                            }
-                            else
-                            {
-                                check.refresh_login(rows[0].id, ip_info, timestamp, true, function(done){
-                                if(!done)
-                                {
-                                    res.render('error', {error: {}, message: "管理员登录失败", action: "/"});
-                                }
-                                else
-                                {
-                                    res.redirect(`/admin/?action=home&id=${rows[0].id}`);
-                                }
-                                });
-                            }
-                        });        
-                    }
-                }
-            });
+			else
+			{
+				let sql = `select password from admin_pass where id = 1;`;
+				conn.query(sql, function(err, rows1){
+					if(err || rows1 === undefined || rows1.length < 1)
+					{
+						console.log(err);
+						res.render('error', {error: err, message: "登录失败", action: "/"});
+					}
+					else
+					{
+						if(password !== rows1[0].password)
+						{
+							res.render('error', {error:{}, message: "密码错误", action: "/"});
+						}
+						else
+						{
+							let now = new Date();
+							let timestamp = now.getTime();
+							let ip_info = req.headers.remoteip || req.socket.remoteAddress;
+							check.check_already_login(rows[0].id, ip_info, timestamp, true, function(already, valid){
+								if(already === false)
+								{
+									check.add_login(rows[0].id, ip_info, timestamp, true, function(done){
+									if(!done)
+									{
+										res.render('error', {error:{}, message: "管理员登录失败", action: "/"});
+									}
+									else
+									{
+										res.redirect(`/admin/?action=home&id=${rows[0].id}`);
+									}
+									});
+								}
+								else
+								{
+									check.refresh_login(rows[0].id, ip_info, timestamp, true, function(done){
+									if(!done)
+									{
+										res.render('error', {error: {}, message: "管理员登录失败", action: "/"});
+									}
+									else
+									{
+										res.redirect(`/admin/?action=home&id=${rows[0].id}`);
+									}
+									});
+								}
+							});        
+						}
+					}
+				});
+			}
         });
         conn.release();
     }
