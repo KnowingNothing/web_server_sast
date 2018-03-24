@@ -796,6 +796,7 @@ let get_type = function(id, contest, callback)
                     }
                     else
                     {
+                        console.log('Type' + rows[0]);
                         callback(true, rows[0].type);
                     }
                 }
