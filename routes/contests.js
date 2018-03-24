@@ -73,6 +73,7 @@ router.get('/contest', function(req, res){
                 check.already_sign_contest(id, contest, function(flag, info){
                     if(flag)
                     {
+                        let contest_tp = {1:'软件应用与开发', 2:'数字媒体设计', 3:'人工智能类'};
                         check.get_type(id, contest, function(ctf, info1) {
                           let res_info = {
                             id: id,
@@ -85,8 +86,7 @@ router.get('/contest', function(req, res){
                             member_info: info.member_info,
                             other: info.other,
                             file_name: info.file_name,
-                            contest_tp: {1:'软件应用与开发', 2:'数字媒体设计', 3:'人工智能类'},
-                            sign_tp:info1
+                            sign_tp:contest_tp[info1]
                           };
                           res.render('contest_state', res_info);
                         });

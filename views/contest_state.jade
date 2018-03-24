@@ -107,12 +107,7 @@ block content
                       您已经报名成功。
                       您的id是：#{id}
                       if(contest === "jiying")
-                        if (#{sign_tp} == 1)
-                          <br> 您报名的类别是：软件应用与开发
-                        else if ((#{sign_tp}) == 2)
-                          <br> 您报名的类别是：数字媒体设计
-                        else
-                          <br> 您报名的类别是：人工智能类
+                        <br> 您报名的类别是：${sign_tp}
                   li
                     .collapsible-header.active
                       组队情况
