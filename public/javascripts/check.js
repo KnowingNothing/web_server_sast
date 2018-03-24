@@ -771,6 +771,8 @@ let get_id = function(number, university, callback)
 
 let get_type = function(id, contest, callback)
 {
+    let cid = 1;
+    if (contest === "jiying") cid = 2;
     pool_admin.getConnection(function(err, conn){
         if(err)
         {
@@ -779,7 +781,7 @@ let get_type = function(id, contest, callback)
         }
         else
         {
-            let sql = `select type from user_contest where id = ${id} and contest = ${contest}`;
+            let sql = `select type from user_contest where id = ${id} and contest = ${cid}`;
             conn.query(sql, function(err, rows){
                 if(err)
                 {
@@ -839,6 +841,8 @@ let get_file_name = function(group_id, callback)
 
 let get_group = function(id, contest, callback)
 {
+  let cid = 1;
+  if (contest === "jiying") cid = 2;
     pool_admin.getConnection(function(err, conn){
         if(err)
         {
@@ -847,7 +851,7 @@ let get_group = function(id, contest, callback)
         }
         else
         {
-            let sql = `select team from user_contest where id = ${id} and contest = ${contest};`;
+            let sql = `select team from user_contest where id = ${id} and contest = ${cid};`;
             conn.query(sql, function(err, rows){
                 if(err)
                 {
