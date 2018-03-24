@@ -86,7 +86,7 @@ router.get('/contest', function(req, res){
                             other: info.other,
                             file_name: info.file_name,
                             contest_tp: {1:'软件应用与开发', 2:'数字媒体设计', 3:'人工智能类'},
-                            sign_tp:info1.type
+                            sign_tp:info1
                           };
                           res.render('contest_state', res_info);
                         });
