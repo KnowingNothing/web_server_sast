@@ -73,7 +73,8 @@ router.get('/contest', function(req, res){
                 check.already_sign_contest(id, contest, function(flag, info){
                     if(flag)
                     {
-                        let res_info = {
+                        check.get_type(id, contest, function(ctf, info1) {
+                          let res_info = {
                             id: id,
                             contest: contest,
                             sign: true,
@@ -83,9 +84,12 @@ router.get('/contest', function(req, res){
                             team_id: info.team_id,
                             member_info: info.member_info,
                             other: info.other,
-                            file_name: info.file_name
+                            file_name: info.file_name,
+                            contest_tp: {1:'软件应用与开发', 2:'数字媒体设计', 3:'人工智能类'},
+                            sign_tp:info1.type
                         };
                         res.render('contest_state', res_info);
+                        });
                     }
                     else
                     {
@@ -145,6 +149,15 @@ router.get('/add_member', function(req, res){
         }
         else
         {
+          check.get_type(id, contest, (e1, tp1) => {
+            if (e1) res.render('error', {error: {}, message: "加入失败", action: `/contests/contest/?id=${id}&contest=${contest}`});
+            else check.get_type(number, contest, (e2, tp2) => {
+              if (e2) res.render('error', {error: {}, message: "加入失败", action: `/contests/contest/?id=${id}&contest=${contest}`});
+              else if (tp1 != tp2) {
+                res.render('error', {error: {}, message: "加入失败，队员报名的应当是同一类别", action: `/contests/contest/?id=${id}&contest=${contest}`});
+              }
+            });
+          });
             check.add_member(id, contest, number, function(done){
                 if(!done)
                 {

@@ -125,6 +125,12 @@ router.post('/register', function(req, res){
   phone_number = req.body.phone_number;
   gender = req.body.gender;
 
+  let reg = /^[\d]+$/;
+  if(!reg.test(number))
+  {
+        res.render('error', {error:{}, message: "学号应全为数字", action: "/register"});
+  }
+  else{
   pool_admin.getConnection(function(err, conn){
     if(err){console.log(err);}
     else
@@ -144,9 +150,10 @@ router.post('/register', function(req, res){
               {
                 let sql = `select id from users where university=${university} and number=${number};`;
                 conn.query(sql, function(err, rows1){
-                  if(err)
+                  if(err || rows1 === undefined || rows1.length < 1)
                   {
                     console.log(err);
+                    res.render('error', {error: {}, message: `注册失败`, action: "/"});
                   }
                   else
                   {
@@ -164,7 +171,7 @@ router.post('/register', function(req, res){
       });
       conn.release();
     }
-  });
+  });}
 });
 
 router.get('/logout', function(req, res){

@@ -677,7 +677,7 @@ let add_team = function(id, contest, new_team, callback)
 }
 
 let add_score = function(id, contest, judge, val, callback) {
-    let sql = `insert into score(id, contest, judge, val) values(${id},'${contest}', ${judge}, ${val});`;
+    let sql = `insert into score(id, contest, team, type) values(${id},${contest_id}, ${team_id}, ${type});`;
     pool_admin.getConnection(function(err, conn){
         if(err)
         {
@@ -761,6 +761,40 @@ let get_id = function(number, university, callback)
                     else
                     {
                         callback(true, rows[0].id);
+                    }
+                }
+            });
+            conn.release();
+        }
+    });
+}
+
+let get_type = function(id, contest, callback)
+{
+    pool_admin.getConnection(function(err, conn){
+        if(err)
+        {
+            console.log(err);
+            callback(false, null);
+        }
+        else
+        {
+            let sql = `select type from user_contest where id = ${id} and contest = ${contest}`;
+            conn.query(sql, function(err, rows){
+                if(err)
+                {
+                    console.log(err);
+                    callback(false, null);
+                }
+                else
+                {
+                    if(rows === undefined || rows.length < 1)
+                    {
+                        callback(false, null);
+                    }
+                    else
+                    {
+                        callback(true, rows[0].type);
                     }
                 }
             });
@@ -1234,6 +1268,7 @@ module.exports = {
     add_score: add_score,
     add_member: add_member,
     get_id: get_id,
+    get_type: get_type,
     get_university: get_university,
     get_group: get_group,
     get_file_name:get_file_name,
