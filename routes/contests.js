@@ -149,15 +149,13 @@ router.get('/add_member', function(req, res){
         }
         else
         {
-          check.get_type(id, contest, (e1, tp1) => {
-            if (e1) {
-              console.log(e1);
+          check.get_type(id, contest, (d1, tp1) => {
+            if (!d1) {
               res.render('error', {error: {}, message: "加入失败", action: `/contests/contest/?id=${id}&contest=${contest}`});
             }
-            else check.get_type(number, contest, (e2, tp2) => {
-              if (e2) {
+            else check.get_type(number, contest, (d2, tp2) => {
+              if (!d2) {
                 res.render('error', {error: {}, message: "加入失败", action: `/contests/contest/?id=${id}&contest=${contest}`});
-                console.log(e2);
               }
               else if (tp1 != tp2) {
                 res.render('error', {error: {}, message: "加入失败，队员报名的应当是同一类别", action: `/contests/contest/?id=${id}&contest=${contest}`});
