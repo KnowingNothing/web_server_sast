@@ -210,16 +210,16 @@ block content
               li.list1
                 h3 在这里更改队伍信息
             form(action="/contests/change_team_name", method="get")
-                  input.button.btn.waves-effect.waves-light(type="submit" value="我要更改队伍名")
                   input(type="hidden" name="id" value="#{id}")
                   input(type="hidden" name="contest" value="#{contest}")
                   input.validate(type="text" name="new_team" required placeholder="新的队伍名称" data-error="新的队伍名称" data-success="right")
+                  input.button.btn.waves-effect.waves-light(type="submit" value="我要更改队伍名")
             form(action="/contests/add_member", method="get")
-                  input.button.btn.waves-effect.waves-light(type="submit" value="我要加入一个队员")
                   input(type="hidden" name="id" value="#{id}")
                   input(type="hidden" name="contest" value="#{contest}")
                   input.validate(type="text" name="number" required placeholder="要加入的队员id" data-error="要加入的队员id" data-success="right")
                   input.validate(type="text" name="key" required placeholder="该队员组队key" data-error="该队员组队key" data-success="right")
+                  input.button.btn.waves-effect.waves-light(type="submit" value="我要加入一个队员")
             if(contest==="jiying")
               ul.topic_grid
                 li.list1
