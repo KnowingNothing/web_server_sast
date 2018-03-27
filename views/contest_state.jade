@@ -106,7 +106,7 @@ block content
                     .collapsible-body
                       您已经报名成功。
                       您的id是：#{id}
-                      您的组队key是：#{team_key}
+                      <br> 您的组队key是：#{team_key}
                       if(contest === "jiying")
                         <br> 您报名的类别是：#{sign_tp}
                   li
@@ -213,13 +213,13 @@ block content
                   input.button.btn.waves-effect.waves-light.rotate2(type="submit" value="我要更改队伍名")
                   input(type="hidden" name="id" value="#{id}")
                   input(type="hidden" name="contest" value="#{contest}")
-                  input.text.team(name="new_team" value="新的队伍名称" onfocus="if(this.value==='新的队伍名称') this.value=''" onblur="if(this.value==='') this.value='新的队伍名称'")
+                  input.text.team(name="new_team" required value="新的队伍名称" onfocus="if(this.value==='新的队伍名称') this.value=''" onblur="if(this.value==='') this.value='新的队伍名称'")
             form(action="/contests/add_member", method="get")
                   input.button.btn.waves-effect.waves-light.rotate2(type="submit" value="我要加入一个队员")
                   input(type="hidden" name="id" value="#{id}")
                   input(type="hidden" name="contest" value="#{contest}")
-                  input.text.team(name="number" value="要加入的队员id" onfocus="if(this.value==='要加入的队员id') this.value=''" onblur="if(this.value==='') this.value='要加入的队员id'")
-                  input.text.team(name="key" value="该队员组队key" onfocus="if(this.value==='该队员组队key') this.value=''" onblur="if(this.value==='') this.value='该队员组队key'")
+                  input.text.team(name="number" required value="要加入的队员id" onfocus="if(this.value==='要加入的队员id') this.value=''" onblur="if(this.value==='') this.value='要加入的队员id'")
+                  input.text.team(name="key" required  value="该队员组队key" onfocus="if(this.value==='该队员组队key') this.value=''" onblur="if(this.value==='') this.value='该队员组队key'")
             if(contest==="jiying")
               ul.topic_grid
                 li.list1
@@ -229,7 +229,7 @@ block content
                     .btn
                       span
                         | File
-                      input(type="file" name="file")
+                      input(required type="file" name="file")
                     .file-path-wrapper
                       input.file-path.validate(type="text")
                     input.button.btn.waves-effect.waves-light.rotate2(type="submit" value="提交")
