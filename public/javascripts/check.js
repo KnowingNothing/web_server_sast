@@ -1,3 +1,4 @@
+let crypto = require('crypto');
 let mysql = require('mysql');
 let config = require('../../config/mysql.json');
 let async = require('async');
@@ -9,6 +10,16 @@ let store_path = config.store_path;
 
 let pool_admin = mysql.createPool(admin_cfg);
 let pool_guest = mysql.createPool(guest_cfg);
+
+function makeid() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 10; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
 
 let check_already_login = function(id, ip_info, timestamp, is_admin, callback)
 {
@@ -233,7 +244,9 @@ let sign_contest = function(id, contest, type, callback)
             }
             let task4 = function(cb)
             {
-                let sql = `insert into user_contest(id, contest, team, type) values(${id},${contest_id}, ${team_id}, ${type});`;
+                let key = makeid();
+                // let key = crypto.createHash('sha256').update(makeid() + new Date()).digest('base64');
+                let sql = `insert into user_contest(id, contest, team, type, team_key) values(${id},${contest_id}, ${team_id}, ${type}, ${key});`;
                 conn.query(sql, function(err){
                     if(err)
                     {
