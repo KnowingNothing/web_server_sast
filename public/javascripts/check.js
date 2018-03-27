@@ -919,16 +919,12 @@ let add_member = function(id, contest, new_id, key, callback)
                 else
                 {
                     contest_id = rows0[0].id;
-                    let sql = `select team, team_key from user_contest where id = ${id} and contest = ${contest_id};`;
+                    let sql = `select team from user_contest where id = ${id} and contest = ${contest_id};`;
                     conn.query(sql, function(err, rows){
                         if(err)
                         {
                             console.log(err);
                             callback(false);
-                        }
-                        else if (rows[0].team_key != key) {
-                          console.log(err);
-                          callback(false);
                         }
                         else
                         {
@@ -946,7 +942,7 @@ let add_member = function(id, contest, new_id, key, callback)
                                     {
                                         let task1 = function(cb)
                                         {
-                                            let sql = `select team from user_contest where id = ${new_id} and contest = ${contest_id};`;
+                                            let sql = `select team, team_key from user_contest where id = ${new_id} and contest = ${contest_id};`;
                                             conn.query(sql, function(err, rows){
                                                 if(err)
                                                 {
@@ -954,6 +950,9 @@ let add_member = function(id, contest, new_id, key, callback)
                                                 }
                                                 else
                                                 {
+                                                    if (rows[0].team_key != key) {
+                                                      cb('key not correct');
+                                                    }
                                                     old_team_id = rows[0].team;
                                                     cb(null);
                                                 }
