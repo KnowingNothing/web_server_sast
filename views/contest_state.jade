@@ -210,16 +210,16 @@ block content
               li.list1
                 h3 在这里更改队伍信息
             form(action="/contests/change_team_name", method="get")
-                  input.button.btn.waves-effect.waves-light.rotate2(type="submit" value="我要更改队伍名")
+                  input.button.btn.waves-effect.waves-light(type="submit" value="我要更改队伍名")
                   input(type="hidden" name="id" value="#{id}")
                   input(type="hidden" name="contest" value="#{contest}")
-                  input.text.team(name="new_team" required value="新的队伍名称" onfocus="if(this.value==='新的队伍名称') this.value=''" onblur="if(this.value==='') this.value='新的队伍名称'")
+                  input.text.team(name="new_team" required placeholder="新的队伍名称" data-error="新的队伍名称" data-success="right")
             form(action="/contests/add_member", method="get")
-                  input.button.btn.waves-effect.waves-light.rotate2(type="submit" value="我要加入一个队员")
+                  input.button.btn.waves-effect.waves-light(type="submit" value="我要加入一个队员")
                   input(type="hidden" name="id" value="#{id}")
                   input(type="hidden" name="contest" value="#{contest}")
-                  input.text.team(name="number" required value="要加入的队员id" onfocus="if(this.value==='要加入的队员id') this.value=''" onblur="if(this.value==='') this.value='要加入的队员id'")
-                  input.text.team(name="key" required  value="该队员组队key" onfocus="if(this.value==='该队员组队key') this.value=''" onblur="if(this.value==='') this.value='该队员组队key'")
+                  input.text.team(name="number" required placeholder="要加入的队员id" data-error="要加入的队员id" data-success="right")
+                  input.text.team(name="key" required placeholder="该队员组队key" data-error="该队员组队key" data-success="right")
             if(contest==="jiying")
               ul.topic_grid
                 li.list1
