@@ -86,6 +86,7 @@ router.get('/contest', function(req, res){
                             member_info: info.member_info,
                             other: info.other,
                             file_name: info.file_name,
+                            team_key: info.team_key,
                             sign_tp:contest_tp[info1]
                           };
                           res.render('contest_state', res_info);
@@ -103,6 +104,7 @@ router.get('/contest', function(req, res){
                             team_id: -1,
                             member_info: '',
                             other: -1,
+                            team_key: '',
                             file_name: 'Undefined'
                         });
                     }
@@ -133,6 +135,7 @@ router.get('/add_member', function(req, res){
     let id = req.query.id;
     let contest = req.query.contest;
     let number = req.query.number;
+    let key = req.query.key;
     let reg = /^[\d]+$/;
     if(!reg.test(number))
     {
@@ -145,7 +148,7 @@ router.get('/add_member', function(req, res){
     check.already_sign_contest(number, contest, function(already){
         if(!already)
         {
-            res.render('error', {error: {}, message: "无法加入，该同学尚未注册，请重试", action: `/contests/contest/?id=${id}&contest=${contest}`});
+            res.render('error', {error: {}, message: "加入失败，请重试", action: `/contests/contest/?id=${id}&contest=${contest}`});
         }
         else
         {
@@ -160,7 +163,7 @@ router.get('/add_member', function(req, res){
               else if (tp1 != tp2) {
                 res.render('error', {error: {}, message: "加入失败，队员报名的应当是同一类别", action: `/contests/contest/?id=${id}&contest=${contest}`});
               }
-              else check.add_member(id, contest, number, function(done){
+              else check.add_member(id, contest, number, key, function(done){
                 if(!done)
                 {
                     res.render('error', {error: {}, message: "无法加入，您的队伍可能人员已满，请重试", action: `/contests/contest/?id=${id}&contest=${contest}`});

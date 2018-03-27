@@ -125,7 +125,7 @@ let already_sign_contest = function(id, contest, callback)
                 else
                 {
                     let contest_id = rows[0].id;
-                    let sql = `select team from user_contest where id = ${id} and contest = ${contest_id};`;
+                    let sql = `select team, team_key from user_contest where id = ${id} and contest = ${contest_id};`;
                     conn.query(sql, function(err, rows1){
                         if(err){console.log(err);callback(false, null);}
                         else if(typeof(rows1) === "undefined" || rows1.length < 1)
@@ -135,6 +135,7 @@ let already_sign_contest = function(id, contest, callback)
                         else
                         {
                             let team_id = rows1[0].team;
+                            let team_key = rows1[0].team_key;
                             let sql = `select other,team_name,attend_confirm,prize,file_name from teams where id = ${rows1[0].team};`;
                             conn.query(sql, function(err, rows2){
                                 if(err){console.log(err);callback(false, null);}
@@ -161,6 +162,7 @@ let already_sign_contest = function(id, contest, callback)
                                               team_name: rows2[0].team_name,
                                               team_id: team_id,
                                               member_info: member_info,
+                                              team_key: team_key,
                                               file_name: rows2[0].file_name});
                                         }
                                     });
@@ -876,7 +878,7 @@ let get_group = function(id, contest, callback)
     });
 }
 
-let add_member = function(id, contest, new_id, callback)
+let add_member = function(id, contest, new_id, key, callback)
 {
     pool_admin.getConnection(function(err, conn){
         if(err)
@@ -904,12 +906,16 @@ let add_member = function(id, contest, new_id, callback)
                 else
                 {
                     contest_id = rows0[0].id;
-                    let sql = `select team from user_contest where id = ${id} and contest = ${contest_id};`;
+                    let sql = `select team, team_key from user_contest where id = ${id} and contest = ${contest_id};`;
                     conn.query(sql, function(err, rows){
                         if(err)
                         {
                             console.log(err);
                             callback(false);
+                        }
+                        else if (rows[0].team_key != key) {
+                          console.log(err);
+                          callback(false);
                         }
                         else
                         {

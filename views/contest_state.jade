@@ -106,6 +106,7 @@ block content
                     .collapsible-body
                       您已经报名成功。
                       您的id是：#{id}
+                      您的组队key是：#{team_key}
                       if(contest === "jiying")
                         <br> 您报名的类别是：#{sign_tp}
                   li
@@ -218,6 +219,7 @@ block content
                   input(type="hidden" name="id" value="#{id}")
                   input(type="hidden" name="contest" value="#{contest}")
                   input.text.team(name="number" value="要加入的队员id" onfocus="if(this.value==='要加入的队员id') this.value=''" onblur="if(this.value==='') this.value='要加入的队员id'")
+                  input.text.team(name="key" value="该队员组队key" onfocus="if(this.value==='该队员组队key') this.value=''" onblur="if(this.value==='') this.value='该队员组队key'")
             if(contest==="jiying")
               ul.topic_grid
                 li.list1
