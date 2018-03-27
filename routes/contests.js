@@ -160,9 +160,7 @@ router.get('/add_member', function(req, res){
               else if (tp1 != tp2) {
                 res.render('error', {error: {}, message: "加入失败，队员报名的应当是同一类别", action: `/contests/contest/?id=${id}&contest=${contest}`});
               }
-            });
-          });
-            check.add_member(id, contest, number, function(done){
+              else check.add_member(id, contest, number, function(done){
                 if(!done)
                 {
                     res.render('error', {error: {}, message: "无法加入，您的队伍可能人员已满，请重试", action: `/contests/contest/?id=${id}&contest=${contest}`});
@@ -171,7 +169,9 @@ router.get('/add_member', function(req, res){
                 {
                     res.render('error', {error: {}, message: "加入成功", action: `/contests/contest/?id=${id}&contest=${contest}`});
                 }
+              });
             });
+          });
         }
     });
 });
