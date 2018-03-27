@@ -246,7 +246,7 @@ let sign_contest = function(id, contest, type, callback)
             {
                 let newkey = makeid();
                 // let key = crypto.createHash('sha256').update(makeid() + new Date()).digest('base64');
-                let sql = `insert into user_contest(id, contest, team, type, team_key) values(${id},${contest_id}, ${team_id}, ${type}, ${newkey});`;
+                let sql = `insert into user_contest(id, contest, team, type, team_key) values(${id},${contest_id}, ${team_id}, ${type}, '${newkey}');`;
                 conn.query(sql, function(err){
                     if(err)
                     {
