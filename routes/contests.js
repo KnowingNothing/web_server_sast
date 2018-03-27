@@ -183,7 +183,7 @@ router.get('/change_team_name', function(req, res){
     check.change_team_name(id, contest, new_team, function(done){
         if(!done)
         {
-            res.render('error', {error: {}, message: "无法加入，这个队伍可能已经存在了，请重试", action: `/contests/contest/?id=${id}&contest=${contest}`});
+            res.render('error', {error: {}, message: "无法加入，这个队伍名可能已经存在了，请重试", action: `/contests/contest/?id=${id}&contest=${contest}`});
         }
         else
         {
