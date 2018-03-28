@@ -217,7 +217,7 @@ block content
           .col.s4
             ul
               li.list1
-                h3 在这里更改队伍信息
+                h3 更改队伍信息
             form(action="/contests/change_team_name", method="get")
                   input(type="hidden" name="id" value="#{id}")
                   input(type="hidden" name="contest" value="#{contest}")
@@ -232,7 +232,7 @@ block content
             if(contest==="jiying")
               ul.topic_grid
                 li.list1
-                  h3.m_3 在这里上传作品
+                  h3.m_3 上传作品
                 form(action="/contests/upload/?id=#{id}&contest=#{contest}" method="post" enctype="multipart/form-data")
                   .file-field.input-field
                     .btn
