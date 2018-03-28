@@ -9,73 +9,55 @@ block content
     .row
     script.
       $('#HOME').addClass('active')
-  #Welcome
+  .container
     .row.card-panel.hoverable
       .wecome-main
-        .col.s6.wecome-text
-          h1 欢迎您来到科协
-          span
-            |我们专注于承办校级比赛与组织志愿者活动
-          p
-            |科协成立以来举办过大大小小的比赛，如今主要承办ACM校内赛与计算机应用设计大赛。
-            |同时，科协参与ACM区域赛与2018年全球总决赛的工作。
-            |本网站主要功能为配合比赛的举办与志愿者工作的进行。
-            |此外，科协为各位提供力所能及的下载资源，方便工作与学习。
-            |科协有意愿为同学们提供良好的竞赛环境、志愿机会以及优秀的资料和切实的服务。
-            |如果您希望了解我们，请点击 About Us，如果您有意参加ACM校内赛和计算机应用设计大赛，
-            |请点击Contests，如果您想要参与ACM校内赛与ACM全球总决赛志愿者活动，请点击Volunteers，
-            |如果您希望下载学习资料，请点击Downloads，如果您希望加入我们，请点击Join Us。祝您愉快！
-          .wecome-button
-            // TODO
-            //a.button.rotate2(href="#") Read More
-              span
-        .col.s6
-          // TODO
-          img.responsive-img(src="/images/颁奖仪式合照.jpg" alt="颁奖仪式合照")
-        .clearfix
+        .col.s12(align="center")
+          h2 欢迎您来到科协网站
+          h4
+            |如果您有意参加<span class="blue-text">ACM校内赛</span>和<span class="blue-text">计算机应用设计大赛</span><br>
+            |请进入<a href='/contests/?id=#{id}'>比赛页面</a>
   // end-of-welcome
-  .featured-section.card-panel.hoverable
-    .row
-      h2 最新动态
-      .featured-main
-        .col.s4.feature-text
-          // TODO
-          img(src="/images/DSC03902.JPG" alt="志愿者在赛场工作" width="300px" height="200px")
-          h3
-            |2017年ACM区域赛
-          p
-            |在刚刚过去的2017年ACM区域赛中，志愿者们出色地完成了任务：
-            |2017年11月18日19日在北京大学邱德拔体育馆举行了ACM区域赛，
-            |比赛中共有近150名志愿者参与，志愿者们身着耀眼的橙色衣服，在赛场服务，
-            |维持着比赛顺利进行。
-          .wecome-button
+  .container
+    .featured-section.card-panel.hoverable
+      .row
+        h2 最新动态
+        .featured-main
+          .col.s4.feature-text
             // TODO
-            //a.button.rotate2(href="#") Read More
-              span
-        .col.s4.feature-text
-          img(src="/images/timg.jpg" alt="ACM标志" width="300px" height="200px")
-          h3
-            |新的比赛正在筹备
-          p
-            |新的学期中我们还将举办ACM校内赛和计算机应用设计大赛，
-            |比赛的相关信息可以在Contests中获知，欢迎各位积极参与，
-          .wecome-button
-            // TODO
-            //a.button.rotate2(href="#") Read More
-              span
-        .col.s4.feature-text
-          img(src="/images/DSC03583.JPG" alt="ACM赛场" width="300px" height="200px")
-          h3
-            |志愿活动火热招募
-          p
-            |新学期即将开始的ACM全球总决赛和ACM校内赛需要大量志愿者参与，
-            |招募活动正在进行，如果您对志愿活动感兴趣、对ACM竞赛感兴趣，
-            |如果您希望为比赛的顺利进行贡献一份力量，或是体验比赛的氛围，
-            |请移步Volunteers中关注信息。
-          .wecome-button
-            // TODO
-            //a.button.rotate2(href="#") Read More
-              span
-  .testimonials#testimonials
-    .wmuSlider.example1
-  // //End-foote
+            img(src="/images/DSC03902.JPG" alt="志愿者在赛场工作" width="300px" height="200px")
+            h3
+              |2017年ACM区域赛
+            p
+              |在刚刚过去的2017年ACM区域赛中，志愿者们出色地完成了任务：
+              |2017年11月18日19日在北京大学邱德拔体育馆举行了ACM区域赛，
+              |比赛中共有近150名志愿者参与，志愿者们身着耀眼的橙色衣服，在赛场服务，
+              |维持着比赛顺利进行。
+            .wecome-button
+              // TODO
+              //a.button.rotate2(href="#") Read More
+                span
+          .col.s4.feature-text
+            img(src="/images/timg.jpg" alt="ACM标志" width="300px" height="200px")
+            h3
+              |新的比赛正在筹备
+            p
+              |新的学期中我们还将举办<span class="blue-text">ACM校内赛</span>和<span class="blue-text">计算机应用设计大赛</span>，
+              |比赛的相关信息可以在<a href='/contests/?id=#{id}'>Contests</a>中获知，欢迎各位积极参与，
+            .wecome-button
+              // TODO
+              //a.button.rotate2(href="#") Read More
+                span
+          .col.s4.feature-text
+            img(src="/images/DSC03583.JPG" alt="ACM赛场" width="300px" height="200px")
+            h3
+              |志愿活动火热招募
+            p
+              |新学期即将开始的ACM全球总决赛和ACM校内赛需要大量志愿者参与，
+              |招募活动正在进行，如果您对志愿活动感兴趣、对ACM竞赛感兴趣，
+              |如果您希望为比赛的顺利进行贡献一份力量，或是体验比赛的氛围，
+              |请移步Volunteers中关注信息。
+            .wecome-button
+              // TODO
+              //a.button.rotate2(href="#") Read More
+                span
