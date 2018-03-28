@@ -15,12 +15,14 @@ block content
         h2 ACM校内赛
       else if(contest === "jiying")
         blockquote
-          | 网站试运行，遇到任何问题请与我们联系
-          | 比赛相关通知：<a href='/documents/info.zip' target="_blank">下载链接</a>
+          | 网站试运行，遇到任何问题请与我们联系 <br>
         script.
           Materialize.toast('网站试运行，遇到任何问题请与我们联系', 5000, 'rounded')
         //  alert('网站试运行，遇到任何问题请与我们联系')
-        h2 计算机应用设计大赛
+        h2
+          | 计算机应用设计大赛
+          h4
+            | 比赛相关通知：<a href='/documents/info.zip' target="_blank">下载链接</a>
       .row
         .col.s4
           ul
@@ -40,6 +42,7 @@ block content
                         | 比赛组队人员限制将尽快公布。
                         | 所有参赛人员应先注册并报名，然后选择加入一支队伍加入或者自己组建新的队伍，
                         | 请在右侧进行操作。<br>
+                      h5
                         | 比赛相关通知：<a href='/documents/info.zip' target="_blank">下载链接</a>
                 li
                   .collapsible-header
