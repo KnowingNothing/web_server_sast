@@ -897,7 +897,7 @@ let add_member = function(id, contest, new_id, key, callback)
         if(err)
         {
             console.log(err);
-            callback(false);
+            return callback(false);
         }
         else
         {
@@ -909,12 +909,12 @@ let add_member = function(id, contest, new_id, key, callback)
                 if(err)
                 {
                     console.log(err);
-                    callback(false);
+                    return callback(false);
                 }
                 else if(rows0 === undefined || rows0.length < 1)
                 {
                     console.log('没有记录的比赛')
-                    callback(false);
+                    return callback(false);
                 }
                 else
                 {
@@ -924,7 +924,7 @@ let add_member = function(id, contest, new_id, key, callback)
                         if(err)
                         {
                             console.log(err);
-                            callback(false);
+                            return callback(false);
                         }
                         else
                         {
@@ -934,7 +934,7 @@ let add_member = function(id, contest, new_id, key, callback)
                                 if(err)
                                 {
                                     console.log(err);
-                                    callback(false);
+                                    return callback(false);
                                 }
                                 else
                                 {
@@ -1036,7 +1036,7 @@ let add_member = function(id, contest, new_id, key, callback)
                                             if(err)
                                             {
                                                 console.log(err);
-                                                callback(false);
+                                                return callback(false);
                                             }
                                             else
                                             {
@@ -1045,12 +1045,12 @@ let add_member = function(id, contest, new_id, key, callback)
                                                     {
                                                         console.log(err);
                                                         conn.rollback();
-                                                        callback(false);
+                                                        return callback(false);
                                                     }
                                                     else
                                                     {
                                                         conn.commit();
-                                                        callback(true);
+                                                        return callback(true);
                                                     }
                                                 });
                                             }
