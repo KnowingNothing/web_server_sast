@@ -6,7 +6,7 @@ block content
     .container
       if(contest === "acm")
         blockquote
-          | 网站试运行，遇到任何问题请与我们联系<br>
+          | 报名已经截止，遇到任何问题请与我们联系<br>
           | 欢迎加入pku2018校赛玩家QQ群，群号码：631207317。Telegram群：https://t.me/joinchat/GaEGzk44-mX5WrGeZfbqVg<br>
           | <br>
           | 请注意评奖规则更改为：北大校内参赛队伍与校外参赛队伍<span class="blue-text">分开</span>参与评奖
@@ -217,14 +217,15 @@ block content
           .col.s4
             ul
               li.list1
-                h3 更改队伍信息
-            form(action="/contests/change_team_name", method="get")
+                h3 报名已经截止，遇到任何问题请与我们联系
+                //- h3 更改队伍信息
+            //- form(action="/contests/change_team_name", method="get")
                   input(type="hidden" name="id" value="#{id}")
                   input(type="hidden" name="contest" value="#{contest}")
                   input.validate(type="text" name="new_team" required placeholder="新的队伍名称" data-error="新的队伍名称" data-success="right")
                   input.button.btn.waves-effect.waves-light(type="submit" value="我要更改队伍名")
-            h5 注意：要和对方组队，需要填入对方的组队key
-            form(action="/contests/add_member", method="get")
+            //- h5 注意：要和对方组队，需要填入对方的组队key
+            //- form(action="/contests/add_member", method="get")
                   input(type="hidden" name="id" value="#{id}")
                   input(type="hidden" name="contest" value="#{contest}")
                   input.validate(type="text" name="number" required placeholder="要加入的队员id" data-error="要加入的队员id" data-success="right")
@@ -283,9 +284,8 @@ block content
               a#type3.col.btn.waves-effect.waves-light(href='/contests/sign/?id=#{id}&contest=#{contest}&type=3') 人工智能类
                 | 报名
             else
-              a.button.btn.waves-effect.waves-light(href='/contests/sign/?id=#{id}&contest=#{contest}&type=0')
+              h5 报名已经截止
+              //- a.button.btn.waves-effect.waves-light(href='/contests/sign/?id=#{id}&contest=#{contest}&type=0')
                 | 点击报名
               h5 赞助商：
               img.responsive-img(src='/images/赞助商.jpg')
-
-
